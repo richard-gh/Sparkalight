@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+{% load thumbnail %}
+	<meta charset="utf-8" />
+	<link rel="stylesheet"href="{{ STATIC_URL }}css/profile.css">
+    <link rel="stylesheet"href="{{ STATIC_URL }}css/road.css">
+
+<script type = "text/javascript" src ="{{ STATIC_URL }}javascript/jquery-1.9.1.min.js"></script>
+
+
+ 
+</head>
+
+
+
+
+
+
+
+<div class="b11"> </div>
+
+
+
+
+<div class="box1"> </div>
+<div class="box2"> SparkaLight</div>
+<div class="box3">  </div>
+<div class="box4"> </div>
+<div class="box5"> {% if person %} {{person.name}}{% endif %}</div>
+<div class="box6">{% if person %} {{person.description}}{% endif %}</div>
+<div class="box8">{% if person.image  %}{% thumbnail person.image  "250x250" as im %}
+    <img src="{{ im.url }}">
+{% endthumbnail %}{% else %} <div class="box20"><span class="box21">?</span><span class="box22">Missing avatar</span></div>{% endif %}</div>
+<div class="box9">Board</div>
+
+
+
+
+
+<a class="theLink" href="{% url "world:Following" %}"><div class="box12"> Following </div> </a>
+<a class="theLink" href="{% url "world:archive" %}"><div class="box13"> Archive </div> </a>
+<a class="theLink" href="{% url "world:BoardFinder" %}"><div class="box14"> Explore </div> </a>
+<a class="theLink" href="{% url "world:BoardCreator" %}"><div class="box15"> Create</div> </a>
+
+<div class="box16"> </div>
+<div class="b9"> </div>
+{% if user.is_authenticated %}<a class="theLink" href="{% url "world:LogoutRequest" %}"><div class="box17">logout </div></a>{% endif %}
+
+{% if person == request.user  %}<a class="theLink" href="{% url "world:Display" %}"><div class="box18">edit profile </div></a>{% else %}{% if not Follows %}
+
+{% if user.is_authenticated %}<a class="theLink" href="{% url "world:follower_add" person.username  %}"><div id="box23"><span id="box24">Spark</span></div></a>{% endif %}
+
+{% endif %}
+{% endif %}
+
+
+
+
+{% if user.is_authenticated %}{% if not person == request.user  %}{% if not Friend  %}{% if not already %}<a class="theLink" href="{% url "world:friendship_add_friend" person.username  %}"><div id="box26"> Add as friend</div> </a>{% endif %}{% endif %}{% endif %}{% endif %}
+
+
+
+
+ 
+
+
+<div class="endless_page_template">
+    {% include page_template %}
+</div>
+<script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+<script>$.endlessPaginate();</script>
+

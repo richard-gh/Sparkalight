@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+{% load thumbnail %}
+
+      <meta charset="utf-8" />
+	<link rel="stylesheet"href="{{ STATIC_URL }}css/search.css">      
+<script type = "text/javascript" src ="{{ STATIC_URL }}javascript/jquery-1.9.1.min.js"></script>
+<script type = "text/javascript" src ="{{ STATIC_URL }}javascript/jquery.columnizer.js"></script>
+
+
+
+<div class="container">
+
+</div>
+
+
+
+
+<div class="block">{% for f in posts.object_list %}
+
+<a class="theLink" href="{% url "world:Profile" f.slug %}"><div class="b1">  {% if f.image %}{% thumbnail f.image "60x60" crop="center" as im %}
+    <img src="{{ im.url  }}">
+{% endthumbnail %}{% else %} <img src="http://127.0.0.1:8000/media/empty/small-grey.png">{% endif %}
+
+<p> {% if f.name %} {{f.name}} {% else %} {{f.username}} {% endif %} </p></div></a>
+
+
+{% endfor %}
+
+
+
+ 
+ </div>
+
+<div class="box14">
+
+        {% if posts.object_list and posts.paginator.num_pages > 1 %}
+        <div class="pagination" style="margin-top: 20px; margin-left: -20px; ">
+
+
+                    &nbsp;Page {{ posts.number }} of {{ posts.paginator.num_pages }}<br>
+
+                {% if posts.has_previous %}
+                    <a class="Link" href= "{% if formula %}?text={{formula}}&{% else %}?{% endif %}page={{ posts.previous_page_number }}">newer entries &lt;&lt; </a>
+                {% endif %}
+                {% if posts.has_next %}
+                    <a class="Link" href="{% if formula %}?text={{formula}}&{% else %}?{% endif %}page={{ posts.next_page_number }}"> &gt;&gt; older entries</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}
+</div>
+
+<a class="theLink" href="{% url "world:Myfriend" %}"><div class="box1">FRIEND</div></a>
+<a class="theLink" href="{% url "world:Following" %}"><div class="box2">FOLLOWING</div></a>
+<a class="theLink" href="{% url "world:Follower" %}"><div class="box3">FOLLOWER</div></a>
+<div class="box4">Search for a friend</div>
+<a class="theLink" href="{% url "world:Profile" person.slug %}"><div class="box5">Return back To Profile</div></a>
+<a class="theLink" href="{% url "world:LogoutRequest" %}"><div class="box6">Logout</div></a>
+
+
+<form method = "GET" action"">{% csrf_token %}
+{{ form.text.errors }}{{form.text}}     
+<input type = "submit" value= "Post" id="index"/>
+</form>

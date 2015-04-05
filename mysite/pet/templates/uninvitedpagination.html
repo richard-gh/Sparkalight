@@ -1,0 +1,43 @@
+
+
+{% load endless %}	{% load thumbnail %}
+
+
+{% paginate 1,1 uninvited using "other_entries_page" %}
+
+
+{% if uninvited %}
+<div class="box9">Friend Request</div>
+<div class="box8">{% for u in uninvited %}
+
+<div class="b1">
+
+	{% if u.image %} {% thumbnail u.image "60x60" crop="center" as im %}<img src="{{ im.url  }}">{% endthumbnail %}
+	{% endif %}
+
+	<p> {{u.from_user.username}}</p>
+
+	<a class="theLink" href="{% url "world:friendship_accept" u.id  %}"><span class="green">Accept</span></a>
+
+	<a class="theLink" href="{% url "world:friendship_cancel" u.id %}"><span class="green">Decline</span></a>
+
+	<br><br>
+
+
+{% endfor %}
+</div>
+{% endif %}
+
+
+{% if uninvited %}
+
+<div class="uninvited">
+
+{% get_pages %}
+
+Showing {{ pages.current_start_index }}-{{ pages.current_end_index }} of
+{{ pages.total_count }}
+</br>
+{{ pages }}
+</div>
+{% endif %}

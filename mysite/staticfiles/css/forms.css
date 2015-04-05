@@ -1,0 +1,22 @@
+@font-face {font-family: Lobster; src: url('Lobster.OTF');}
+@font-face {font-family: Pacifico; src: url('Pacifico.TTF');}
+@font-face {font-family: lobsterwebfont; src: url('lobsterwebfont.EOT');}
+
+body {background-image:url('wallpaperss.jpg');
+
+}
+
+#light{font-family: Lobster,lobsterwebfont;font-size: 40px;position: absolute;left:50px;top:150px;color: #FFFFFF}
+#light2{font-family: Pacifico;font-size: 27px;position: absolute;left:50px;top:210px;color: #FFFFFF}
+#light3{font-family: Lobster,lobsterwebfont;font-size: 20px;position: absolute;left:1000px;top: 5px;color: #FFFFFF}
+#light4{font-family: Lobster,lobsterwebfont;font-size: 20px;position: absolute;left:1220px;top: 5px;color: #FFFFFF}
+
+#id_email{height:26px;width:160px;position: absolute;left:1050px;top: 7px;}
+#id_password{height:26px;width:160px;position: absolute;left:1300px;top: 7px;}
+#submit{font-family: Lobster,lobsterwebfont;font-size: 17px; position: absolute;left:1470px;top: 5px;color: #787878}
+#forgot{font-family: Lobster,lobsterwebfont;font-size: 17px; position: absolute;left:1470px;top: 5px;}
+.theLink {text-decoration:none;}
+.form-errors{position: absolute;left:730px;top: -10px;color: #FFFFFF;width: 250px;height:50px;}
+#errors2{position: absolute;left:1250px;top: 25px;color: #FFFFFF;width: 190px;height:50px;}
+#errors{position: absolute;left:980px;top: 25px;color: #FFFFFF;width: 190px;height:50px;}
+#e{position: absolute;left:1540px;top: 0px;color: #FFFFFF;width: 190px;height:50px;font-size: 30px;}

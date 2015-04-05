@@ -1,0 +1,27 @@
+body {background-color: #9AD9EA;}
+@font-face {font-family: Bellota-Regular; src: url('Bellota-Regular.OTF');}
+
+.box1{background-color: #0176DD; height: 460px; width: 410px;position: absolute;left: 520px;top:100px;border-style:solid;border-color:#FF7E00;border-width:25px;}
+@font-face {font-family: Lobster; src: url('Lobster.OTF');}
+@font-face {font-family: lobsterwebfont; src: url('lobsterwebfont.EOT');}
+#box2{background-color: #FF7E00; height: 40px; width: 80px;position: absolute;left: 120px;top:310px;text-align: center;color: #FFFFFF;font-family: Lobster,lobsterwebfont;;font-size: 20px;border-style:solid;border-color:#FF7E00;border-width:1px;}
+.box3{ height: 40px; width: 300px;position: absolute;left: 590px;top:140px;text-align: center;color: #FFFFFF;font-family: Lobster,lobsterwebfont;;font-size: 30px;}
+.box7{ height: 40px; width: 370px;position: absolute;left: 570px;top:180px;text-align: center;color: #ABC838;font-family: Lobster,lobsterwebfont;;font-size: 23px;}
+
+.box4{position: absolute;left: 570px;top:200px;}
+textarea {height:100px;width: 200px;position:absolute; top:170px;left: 150px;color:#FF7E00;font-family: Bellota-Regular;}
+input {color:#0176DD;font-family: Bellota-Regular;height:22px;}
+#i{color: #FFFFFF;font-family: Lobster,lobsterwebfont;font-size: 28px;margin-top: 35px;}
+#id_date_of_birth{position: absolute;left:680px;top:375px;}
+#username{color: #FFFFFF;font-family: Lobster,lobsterwebfont;font-size: 22px;position: absolute;left: 570px;top:250px;}
+#email{color: #FFFFFF;font-family: Lobster,lobsterwebfont;font-size: 25px;font-size: 22px;position: absolute;left: 570px;top:310px;}
+#password{color: #FFFFFF;font-family: Lobster,lobsterwebfont;font-size: 25px;font-size: 22px;position: absolute;left: 570px;top:420px;}
+#birthday{color: #FFFFFF;font-family: Lobster,lobsterwebfont;font-size: 25px;font-size: 22px;position: absolute;left: 570px;top:370px;}
+
+#id_username{position: absolute;left: 670px;top:250px;}
+#id_email{position: absolute;left: 640px;top:315px;}
+#id_password{position: absolute;left: 670px;top:425px;}
+#error{position: absolute;left: 970px;top:270px;font-family: #book antiqua;color:#0176DD;}
+#error2{position: absolute;left: 970px;top:330px;font-family: #book antiqua;color:#0176DD;}
+#error3{position: absolute;left: 970px;top:440px;font-family: #book antiqua;color:#0176DD;}
+#error4{position: absolute;left: 970px;top:380px;font-family: #book antiqua;color:#0176DD;}

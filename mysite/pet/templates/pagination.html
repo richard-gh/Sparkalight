@@ -1,0 +1,121 @@
+{% load endless %}{% load thumbnail %}
+<script type = "text/javascript" src ="{{ STATIC_URL }}javascript/jquery-1.9.1.min.js"></script>
+
+{% paginate 16,16 posts  %}
+
+
+
+<div class="block">
+
+	{% for f in posts %}
+
+
+{% if Follower %}{% load thumbnail %}
+
+<a class="theLink" href="{% url "world:Profile"  f.follower.username %}">
+
+<div class="b1">  
+
+	{% if f.follower.image %}{% thumbnail f.follower.image "60x60" crop="center" as im %}<img src="{{ im.url  }}">
+	{% endthumbnail %}{% else %} <img src="http://127.0.0.1:8000/media/empty/small-blue.png"> {% endif %}
+
+	<p>{% if f.follower.name %} {{f.follower.name}} {% else %} {{f.follower.username}} {% endif %} </p>
+</div>
+
+</a>
+
+{% endif %}
+
+
+
+
+{% if Following %}
+
+<a class="theLink" href="{% url "world:Profile"  f.followee.username %}">
+
+
+<div class="b1">  
+
+
+	{% if f.followee.image %}{% thumbnail f.followee.image "60x60" crop="center" as im %}<img src="{{ im.url  }}">
+	{% endthumbnail %}{% else %} <img src="http://127.0.0.1:8000/media/empty/small-green.png"> {% endif %}
+
+	<p> {% if f.followee.name %} {{f.followee.name}} {% else %} {{f.followee}}     {% endif %}      </p>
+
+</div>
+</a>                
+
+{% endif %}
+
+{% if Friend %}
+
+<a class="theLink" href="{% url "world:Profile"  f.username %}">
+
+
+
+
+<div class="b1">  {% if f.image %}{% thumbnail f.image "60x60" crop="center" as im %}
+    <img src="{{ im.url  }}">
+{% endthumbnail %}{% else %} <img src="http://127.0.0.1:8000/media/empty/small-blue.png">
+
+{% endif %}<p> {% if f.name %} {{f.name}} {% else %} {{f.username}} {% endif %} </p></div>
+
+{% endif %}
+
+
+</a>
+
+
+
+{% endfor %}
+</div>
+
+
+{% if Follower %}
+
+{% get_pages %}
+<div class="paginator">
+Showing {{ pages.current_start_index }}-{{ pages.current_end_index }} of
+{{ pages.total_count }}
+</br>
+{{ pages }}
+</div>
+
+{% endif %}
+
+{% if Following %}
+
+{% get_pages %}
+<div class="paginator">
+Showing {{ pages.current_start_index }}-{{ pages.current_end_index }} of
+{{ pages.total_count }}
+</br>
+{{ pages }}
+</div>
+
+{% endif %}
+
+
+
+{% if Friend and uninvited %}
+
+{% get_pages %}
+<div class="paginator">
+Showing {{ pages.current_start_index }}-{{ pages.current_end_index }} of
+{{ pages.total_count }}
+</br>
+{{ pages }}
+</div>
+
+{% else %}
+
+{% get_pages %}
+<div class="friends">
+Showing {{ pages.current_start_index }}-{{ pages.current_end_index }} of
+{{ pages.total_count }}
+</br>
+{{ pages }}
+</div>
+
+
+{% endif %}

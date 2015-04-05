@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="us">
+<head>
+	<link rel="stylesheet"href="{{ STATIC_URL }}css/new.css">
+  	<link type='text/css' rel='stylesheet' href="{{STATIC_URL}}css/style.css" />
+   	<script type="text/javascript" src="{{STATIC_URL}}javascript/jquery-1.10.1.min.js" ></script>
+   	<script type = "text/javascript" src ="{{ STATIC_URL }}javascript/jquery.columnizer.js"></script>
+<script type = "text/javascript" src ="{{ STATIC_URL }}javascript/jquery.lazyload.min.js"></script>
+
+  <script>
+   {% verbatim %}
+  jQuery(document).ready(function ($) {
+      $("img.lazy").lazyload(
+          { data_attribute: "orig" 
+          });
+  });{% endverbatim %}
+</script>
+
+
+   	<script type="text/javascript">
+	$.ajaxSetup({ cache: false });
+	function searchComments(searchKey, recent, liked, shirtSize, page)
+	{
+
+		  	
+		  $.ajax({
+			url: '{% url "world:search_boards" %}',
+			data: 
+			{
+				search_key: searchKey,
+				recent_flag: recent,
+				liked_flag: liked,
+				shirt_size: shirtSize,
+				page: page,
+				csrfmiddlewaretoken: '{{ csrf_token }}'
+			},
+		  type: 'get',
+		  dataType: 'json',
+		  success: function(data){ 
+
+
+			if(data.success == "true")
+			{
+				
+				var pageNumber = data.page_num;
+				var perPage = data.per_page;
+				var totalCommentCount = data.board_count;
+				var pageCommentCount = data.boards.length;
+				var previousLabel = data.previous_label;	
+				var nextLabel = data.next_label;
+				var comm ="";
+				var ownerFlag = "";
+				
+				$('#commentbox').hide();
+				$("#commentbox").html("");
+				
+				for( board in data.boards)
+				{
+					//alert();
+					$("#commentbox").append( "<a class='theLink' href='/board/"+data.slug[board]+","+data.id[board]+"' >" +"<div class='box13' ><div class='picture'><img class='lazy' src='"+ data.image_list[board] + "' /> </div><div id='pink'>" + data.boards[board]+"</div>" + "<div id='orange'>"  + data.user[board]+ "</div>"+"</div></a>");								
+				}
+				$('#commentbox').fadeIn('fast');
+				
+				$('.page_stats').hide();
+				
+				if(pageCommentCount == 0)
+				{
+					$(".page_stats").html("No record found. Please check your search criteria.");
+				}
+				else
+				{
+					if(pageNumber == 1)
+					{
+						var start = pageNumber;
+						var end = pageCommentCount;
+						$(".page_stats").html("Showing "+start+" - "+end+" of "+totalCommentCount);
+					}
+					else
+					{
+						var start = ((pageNumber-1)*perPage)+1;
+						var end = start+pageCommentCount-1;
+						$(".page_stats").html("Showing "+ start+" - "+end+" of "+totalCommentCount);
+					}
+				}
+				$('.page_stats').fadeIn('fast');				
+				$(".pages").hide();
+				$(".pages").html("");
+				if(data.total_pages > 1)
+				{
+					for(var i=1; i<= data.total_pages; i++)
+					{
+						if(pageNumber > 1 && i==1)
+						{
+							$(".pages").append('<a href="#page'+(pageNumber-1)+'" onclick="searchComments(\''+searchKey+'\',\''+ recent +'\',\''+ liked+'\',\''+ shirtSize+'\','+(pageNumber-1)+')" rel="page" class="endless_page_link">'+previousLabel+'</a>');
+						}
+						if(pageNumber == i)
+						{
+							$(".pages").append('<span class="endless_page_current"><strong>'+i+'</strong></span>');
+						}
+						else
+						{
+							$(".pages").append('<a href="#page'+i+'" onclick="searchComments(\''+searchKey+'\',\''+ recent +'\',\''+ liked+'\',\''+ shirtSize+'\','+i+')" rel="page" class="endless_page_link">'+i+'</a>');
+						}					
+					}
+					$('.pages').fadeIn('fast');
+					
+					if(pageNumber < data.total_pages)
+					{
+						$(".pages").append('<a href="#page'+(pageNumber+1)+'" onclick="searchComments(\''+searchKey+'\',\''+ recent +'\',\''+ liked+'\',\''+ shirtSize+'\','+(pageNumber+1)+')" rel="page" class="endless_page_link">'+nextLabel+'</a>');
+					}
+				}
+			}
+			else
+			{
+				alert(data.msg);
+			}
+		  },
+		  error: function(){
+			alert('There was some internal error. Request could not be completed!');
+		  }
+	});
+	}
+	$(document).ready(function(){
+		searchComments("","","","",1)
+		
+		$(".searchButton").on("click",function()
+		{
+			
+			var shirtSize = $("#id_shirt_size").val();
+			var searchKey = $.trim($("#id_search_key").val());
+			
+			if(this.id == "recent")
+			{
+				searchComments("", 1, "", shirtSize, 1)
+			}
+			else if(this.id == "liked")
+			{
+				searchComments("", "", 1, shirtSize, 1)
+			}
+			else if(this.id == "search")
+			{
+				if(searchKey == "")
+				{	alert("Please enter a search key-word"); 
+					return;
+				}
+				searchComments(searchKey, "", 1, shirtSize, 1)
+			}
+		});
+	});
+   	</script>
+
+  <script>
+   {% verbatim %}
+  jQuery(document).ready(function ($) {
+      $("img.lazy").lazyload(
+          { data_attribute: "orig" 
+          });
+  });{% endverbatim %}
+</script>
+
+
+</head>
+<body>
+
+<div class="box1"></div>
+<div class="box3"></div>
+<div class="box4"></div>
+<div class="box7">Share your inspirational Journey</div>
+<a class="theLink" href="{% url "world:Profile" person.slug %}"><div class="box9">Profile</div></a>
+<a class="theLink" href="{% url "world:archive" %}"><div class="box10">Achive</div></a>
+<a class="theLink" href="{% url "world:Following" %}"><div class="box11">Following</div></a>
+<a class="theLink" href="{% url "world:BoardCreator" %}"><div class="box12">Create</div></a>
+<div class="box2">SparkaLight</div>
+
+
+		{{form.shirt_size}}
+
+
+			<input type="button" class="  searchButton box5" id="recent" value="RECENT">
+			<input type="button" class=" searchButton box6" id="liked" value="MOST LIKED">
+
+		
+		{{form.search_key}}
+			<input type="button" class="button searchButton " id="search" value="Search">
+
+
+<div class="box8">
+
+		<div id="commentbox" ></div>
+
+
+
+</div>
+
+<div class="paginator">
+	<div class="page_stats">
+		</div>
+
+</div>
+
+
+		<div class="pages">
+<script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+<script>$.endlessPaginate();</script>
+</div>	
+
+</div>
+
+</body>
+</html>

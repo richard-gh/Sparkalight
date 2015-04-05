@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN""http://www.w3.org/TR/html4/strict.dtd">
+
+	<link rel="stylesheet"href="{{ STATIC_URL }}css/register.css">      
+<body>
+<div class="box1"></div>
+<div class="box3">Welcome to SparkaLight</div>
+<div class="box7">Your inspirational Journey begin here</div>
+<span id="username">Username</span>
+<span id="email">Email:</span>
+<span id="password">Password:</span>
+<span id="birthday">Birth Date:</span>
+
+<form method ="POST"> {% csrf_token %}
+<span id="error">{{form.username.errors}}</span>
+<span id="error2">{{form.email.errors}}</span>
+<span id="error3">{{form.password.errors}}</span>
+<span id="error4">{{form.date_of_birth.errors}}</span>
+
+{{form.username}}
+{{form.email}}
+<span id="id_date_of_birth">{{form.date_of_birth}}</span>
+
+{{form.password}}
+
+<div class="box4">
+
+
+    <input type = "submit" value= "sign up" id="box2"/>
+
+
+</div>
+</form>
+
+
+
+
+</body>

@@ -1,0 +1,41 @@
+body {background-color: #9AD9EA;}
+.box1{background-color: #FBDAA7;height:1200px;width:900px;border-color: #FFFFFF; border-style:solid;border-width:1px;position: absolute;left: 270px;}
+.box2 {background-color: #9AD9EA;height:45px;width: 205px;position: absolute;left: 610px;top: 50px;font-size:40px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #FFFFFF;text-align:center;}
+.box3 {background-color: #EE1B24;height:35px;width: 195px;position: absolute;left: 440px;top: 72px;}
+.box4 {background-color: #EE1B24;height:35px;width: 195px;position: absolute;left: 790px;top: 70px;}
+.theLink {text-decoration:none;}
+
+
+.box5 {background-color: #9AD9EA;height:28px;width: 134px;position: absolute;left: 310px;top: 220px;text-align:center;color: #FFFFFF;font-family: Leelawadee;font-size:14px;padding-top:9px; font-weight: bold;.}
+.box6 {background-color: #9AD9EA;height:28px;width: 134px;position: absolute;left: 450px;top: 220px;text-align:center;color: #FFFFFF;font-family: Leelawadee;font-size:14px;padding-top:9px;font-weight: bold;.}
+.box7 {background-color: #FBDAA7;height:90px;width: 190px;position: absolute;top: 120px;left: 620px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #EE1B24;text-align:center;}
+@font-face {font-family: HoneyScript-SemiBold; src: url('HoneyScript-SemiBold.TTF');}
+
+@font-face {font-family: honeyscript-semibold-webfont; src: url('honeyscript-semibold-webfont.eot');}
+@font-face {font-family: Bellota-Regular; src: url('Bellota-Regular.OTF');}
+
+.box8{background-color: #FBDAA7;height:760px;width:750px;position: absolute;left:300px;top: 280px;}
+
+
+
+
+.box9 {background-color: #EE1B24;height:35px;width: 100px;position: absolute;left: 413px;top: 72px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #FFFFFF;text-align:center;}
+.box10 {background-color: #EE1B24;height:35px;width: 100px;position: absolute;left: 510px;top: 72px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #FFFFFF;text-align:center;}
+.box11 {background-color: #EE1B24;height:35px;width: 85px;position: absolute;left: 830px;top: 70px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #FFFFFF;text-align:center;}
+.box12 {background-color: #EE1B24;height:35px;width: 85px;position: absolute;left: 915px;top: 70px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #FFFFFF;text-align:center;}
+
+
+.box13{ ;text-align: center;width:200px;background-color: #FFFFFF;border-width:2px;margin: 5px;padding-bottom: 5px;}
+#pink {font-size:18px;font-family:Garamond;color: #709AD1;margin-left: 4px;margin: left;margin-bottom: 3px;}
+#orange {font-size:13px;font-family:Garamond;color: #E5AA7A;margin-left: 4px;margin: left;margin-bottom: 3px;}
+#red {font-size:18px;font-family:Garamond;color:#FF7E00;margin-left: 4px;margin: left;}
+
+
+img {border-style:solid;border-color:#FFFFFF;border-width:7px;}
+.picture{margin: 5px}
+
+input {position: absolute; top: 225px; left: 880px;width: 200px;height: 25px;border-style:solid;border-color:#D7D1C4;border-width:2px;text-align: center;font-family: Bellota-Regular;font-size: 13px;color: #9C5A3C;}
+.box14{position: absolute;left:1200px;top: 240px;font-family: Pacifico;color:#E5AA7A;height:130px;width:100px;}
+
+.Link {color:#9C5A3C; text-decoration:none; }
+.pagination {font-family: Pacifico;color:#9C5A3C}

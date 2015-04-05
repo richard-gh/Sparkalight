@@ -1,0 +1,36 @@
+body {background-color: #ABC838;}
+@font-face {font-family: Bellota-Regular; src: url('Bellota-Regular.OTF');}
+@font-face {font-family: Pacifico; src: url('Pacifico.TTF');}
+
+.box1{background-color: #E9B988; height: 550px; width: 390px;position: absolute;left: 520px;top:100px;border-style:solid;border-color:#9B5A3C;border-width:30px;text-align: center;}
+@font-face {font-family: Lobster; src: url('Lobster.OTF');}
+@font-face {font-family: lobsterwebfont; src: url('lobsterwebfont.EOT');}
+@font-face {font-family: Quicksand_Book; src: url('Quicksand_Book.OTF');}
+
+
+#box2{background-color: #FF7E00; height: 40px; width: 80px;position: absolute;left: 690px;top:630px;text-align: center;color: #FFFFFF;font-family: Lobster,lobsterwebfont;font-size: 25px;border-style:solid;border-color:#FF7E00;border-width:1px;}
+.box3{background-color: #E9B988; height: 40px; width: 250px;color: #FFFFFF;font-family: Lobster,lobsterwebfont;font-size: 30px;position: absolute;top:150px;left:640px;}
+.box4{position: absolute;left: 570px;top:200px;}
+{height:100px;width: 200px;position:absolute; top:160px;left: 150px;color:#FF7E00;font-family: Bellota-Regular;}
+.cup1 {text-align: center;color:#FFFFFF;font-family: Lobster,lobsterwebfont;font-size: 25px;position: absolute;top:220px;left:570px;}
+#id_name {width: 250px;height: 30px;color:#9B5A3C;font-family: Quicksand_Book; font-size: 15px;position: absolute;top:220px;left: 650px;}
+.cup2 {color:#FFFFFF;font-family: Lobster,lobsterwebfont;font-size: 25px;margin-top: 10px;position: absolute;top:240px;left:570px;}
+#id_text {width: 230px;height: 80px;color:#9B5A3C;font-family: Quicksand_Book; font-size: 15px;position:absolute;left:700px;top: 260px;}
+.box5{background-color: #E9B988; height: 40px; width: 380px;position: absolute;left: 555px;top:400px;text-align: center;color: #9B5A3C;font-family: Lobster,lobsterwebfont;font-size: 25px;}
+#optional{color: #FFFFFF;font-family: Lobster;font-size: 25px;height:300px;position: absolute;top:0px;}
+#id_shirt_size{position: absolute;left:700px;top:360px;width:200px;height:25px;text-align: center;color:#FFFFFF;font-family: Lobster,lobsterwebfont;font-size: 17px;background-color:#E9B988 }
+.cup3 {color:#FFFFFF;font-family: Lobster,lobsterwebfont;font-size: 25px;position: absolute;top:430px;left:780px;}
+.cup4 {color:#9B5A3C;font-family: Lobster,lobsterwebfont;font-size: 25px;position: absolute;top:470px;left:600px;}
+.cup5 {color:#9B5A3C;font-family: Lobster,lobsterwebfont;font-size: 25px;position: relative;top:500px;left:560px;}
+.cup6 {text-align: center;color:#FFFFFF;font-family: Lobster,lobsterwebfont;font-size: 25px;position: absolute;top:350px;left:570px;}
+
+#id_description {width: 230px;height: 70px;color:#9B5A3C;font-family: Quicksand_Book; font-size: 15px;position:absolute;left:680px;top: 510px;}
+#id_image {color:#9B5A3C;font-family: Quicksand_Book; font-size: 15px;position:absolute;left:680px;top: 475px;}
+#error {background-color: #ABC838; height: 30px; width: 300px;color: #B7111C;font-family: Bellota-Regular;font-size: 15px;position: absolute;top:420px;left:1000px;}
+#error2 { height: 30px; width: 300px;color: #FFFFFF;font-family: Bellota-Regular;font-size: 15px;position: absolute;top:250px;left:960px;}
+#error3 { height: 30px; width: 300px;color: #9B5A3C;font-family: Bellota-Regular;font-size: 15px;position: absolute;top:470px;left:960px;}
+#error4 { height: 30px; width: 300px;color: #9B5A3C;font-family: Bellota-Regular;font-size: 15px;position: absolute;top:200px;left:960px;}
+
+.box7{background-color: #E9B988; height: 140px; width: 70px;position: absolute;left: 279px;top:0px;border-color: #9B5A3C;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-width: 10px;font-family: Lobster,lobsterwebfont;text-align: center;color: #FFFFFF}
+.theLink {text-decoration:none;}
+.create {color: #FF7E00;font-size: 22px;font-family: Lobster,lobsterwebfont;position: absolute;left: 690px;top:630px;}

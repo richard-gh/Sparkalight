@@ -1,0 +1,36 @@
+body {background-color: #9AD9EA;}
+.box5 {background-color: #9AD9EA;height:28px;width: 134px;position: absolute;left: 310px;top: 220px;text-align:center;color: #FFFFFF;font-family: Leelawadee;font-size:14px;padding-top:9px; font-weight: bold;.}
+.box7 {background-color: #FBDAA7;height:90px;width: 190px;position: absolute;top: 120px;left: 620px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #EE1B24;text-align:center;}
+.box9 {background-color: #EE1B24;height:35px;width: 100px;position: absolute;left: 413px;top: 72px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #FFFFFF;text-align:center;}
+.box10 {background-color: #EE1B24;height:35px;width: 100px;position: absolute;left: 510px;top: 72px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #FFFFFF;text-align:center;}
+.box11 {background-color: #EE1B24;height:35px;width: 85px;position: absolute;left: 830px;top: 70px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #FFFFFF;text-align:center;}
+@font-face {font-family: honeyscript-semibold-webfont; src: url('honeyscript-semibold-webfont.eot');}
+@font-face {font-family: Bellota-Regular; src: url('Bellota-Regular.OTF');}
+@font-face {font-family: HoneyScript-SemiBold; src: url('HoneyScript-SemiBold.TTF');}
+@font-face {font-family: Lora; src: url('Lora-Regular.TTF');}
+
+.box1{background-color: #FBDAA7;height:1200px;width:900px;border-color: #FFFFFF; border-style:solid;border-width:1px;position: absolute;left: 270px;}
+.box2 {background-color: #9AD9EA;height:45px;width: 205px;position: absolute;left: 610px;top: 50px;font-size:40px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #FFFFFF;text-align:center;}
+.box3 {background-color: #EE1B24;height:35px;width: 195px;position: absolute;left: 440px;top: 72px;}
+.box4 {background-color: #EE1B24;height:35px;width: 195px;position: absolute;left: 790px;top: 70px;}
+.theLink {text-decoration:none;}
+.box12 {background-color: #EE1B24;height:35px;width: 85px;position: absolute;left: 915px;top: 70px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #FFFFFF;text-align:center;}
+.box5 {background-color: #9AD9EA;height:35px;width: 134px;position: absolute;left: 310px;top: 280px;text-align:center;color: #FFFFFF;font-family: Leelawadee;font-size:14px;padding-top:9px; font-weight: bold;padding-bottom:20px;}
+.box6 {background-color: #9AD9EA;height:35px;width: 134px;position: absolute;left: 450px;top: 280px;text-align:center;color: #FFFFFF;font-family: Leelawadee;font-size:14px;padding-top:9px;font-weight: bold;padding-bottom:20px;}
+#id_search_key {position: absolute; top: 285px; left: 880px;width: 250px;height: 25px;border-style:solid;border-color:#D7D1C4;border-width:2px;text-align: center;font-family: Bellota-Regular;font-size: 13px;color: #787878;}
+#id_shirt_size{background-color:#FFFFBA;  background-color:#9AD9EA;border-style:none;position:absolute;left:370px;top:235px;width:150px;height:25px;font-family: Leelawadee;font-size:16px;color:#FFFFFF;text-align:center;font-weight:bold;}
+#search {position: absolute; top: 285px; left: 1090px;width:50px;background-color:#FBDAA7;color: #EE1B24;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont; border-style:none;font-size:23px;}
+.box8{background-color: #FBDAA7;height:760px;width:750px;position: absolute;left:300px;top: 380px;}
+.box13{ text-align: center;width:200px;height:280px;background-color: #FBDAA7;border-width:2px;margin: 5px;padding-bottom: 5px;float:left;}
+img {border-style:solid;border-color:#FFFFFF;border-width:7px;float: left;}
+.picture{margin: 5px}
+#pink {font-size:17px;font-family:Lora;color: #709AD1;margin-left: 4px;margin: left;margin-bottom: 5px;}
+#orange {font-size:14px;font-family:Lora;color: #E5AA7A;margin-left: 4px;margin: left;margin-bottom: 3px;}
+.paginator {position: absolute;left:1185px;top:400px;color:#FFFFFF;text-decoration:none;}
+.endless_page_link{color:#00B7EF;}
+.pages{ position: absolute;left:1200px;top:425px;}
+strong { color:#FFFFFF;}
+#commentbox
+{
+width:1000px;height:500px;
+}

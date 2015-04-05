@@ -1,0 +1,57 @@
+@font-face {font-family: honeyscript-semibold-webfont; src: url('honeyscript-semibold-webfont.eot');}
+@font-face {font-family: HoneyScript-SemiBold; src: url('HoneyScript-SemiBold.TTF');}
+
+.cake1 {background-color: #00B7F0;height:55px;width: 215px;position: absolute;left: 600px;top: 20px;font-size:40px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #FFFFFF;text-align:center;}
+.box9 {background-color: #F6E49C;height:40px;width: 100px;position: absolute;left: 413px;top: 46px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #00B7F0;text-align:center;}
+.box10 {background-color: #F6E49C;height:40px;width: 100px;position: absolute;left: 510px;top: 46px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #00B7F0;text-align:center; }
+.box11 {background-color: #F6E49C;height:40px;width: 85px;position: absolute;left: 830px;top: 45px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #00B7F0;text-align:center;}
+.box12 {background-color: #F6E49C;height:40px;width: 85px;position: absolute;left: 915px;top: 45px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #00B7F0;text-align:center; }
+.box3 {background-color: #F6E49C;height:45px;width: 225px;position: absolute;left: 410px;top: 42px;border-top-style:solid;border-bottom-style:solid;border-color:#00B7F0 ;border-width: 5px;}
+.box4 {background-color: #F6E49C;height:45px;width: 215px;position: absolute;left: 790px;top: 40px;border-top-style:solid;border-bottom-style:solid;border-color:#00B7F0 ;border-width: 5px;}
+body { background-color: #9AD9EA}
+.box13 {background-color: #06B5EA;height:33px;width: 500px;position: absolute;left: 450px;top: 150px;font-size:30px;font-family:HoneyScript-SemiBold,honeyscript-semibold-webfont;text-align:center;color: #FFFFFF;text-align:center; }
+.box15 {display:inline;background-color: #FFFFFF;height:480px;width: 500px;position: absolute;left: 450px;top: 230px; }
+.box16 {background-color: #E8A87C;height:26px;width: 80px;position: absolute;left: 950px;top: 250px;font-size:18px;font-family:Garamond;text-align:center;color: #FFFFFF;padding-top:5px;}
+.box17 {background-color: #00B7F0;height:26px;width: 90px;position: absolute;left: 950px;top: 280px;font-size:18px;font-family:Garamond;color: #FFFFFF;padding-top:5px;padding-left: 23px;}
+.box18 {background-color: #F6E49C;height:26px;width: 130px;position: absolute;left: 950px;top: 310px;font-size:18px;font-family:Garamond;color: #00B7F0;padding-top:5px;padding-left: 23px;}
+.box19 {background-color: #99D9EA;height:26px;width: 128px;position: absolute;left: 8px;top: 10px;font-size:18px;font-family:Garamond;color: #FFFFFF;padding-top:5px;font-style: bold;padding-left: 4px;font-weight:bold;}
+.box20 {background-color: #99D9EA;height:26px;width: 300px;position: absolute;left: 143px;top: 10px;font-size:18px;font-family:Garamond;color: #FFFFFF;padding-top:5px;padding-left: 4px;font-weight:bold;}
+.box21 {position: absolute;left: 380px;top: 445px;font-size:16px;font-family:Garamond;color: #B4B4B4;padding-top:5px;padding-left: 4px;font-weight:bold;border-color:#DCDCDC;border-style:solid;}
+
+.username {background-color: #FFFFFF;height:20px;width: 125px;position: relative;left: 10px;top: 60px;font-size:19px;font-family:Garamond;color: #E8A87C;overflow:hidden;}
+.description {background-color: #FFFFFF;height:20px;width: 294px;position: relative;left: 147px;top: 40px;font-size:19px;font-family:Garamond;color: #E8A87C;overflow:hidden;}
+.username2 {background-color: #FFFFFF;height:20px;width: 125px;position: relative;left: 10px;top: 60px;font-size:19px;font-family:Garamond;color: #B4B4B4;overflow:hidden;}
+.description2 {background-color: #FFFFFF;height:20px;width: 294px;position: relative;left: 147px;top: 40px;font-size:19px;font-family:Garamond;color: #B4B4B4;overflow:hidden;}
+
+.id_check {position: relative;left: 460px;top: 23px;}
+#id_recipient{height:30px;width: 300px;position: absolute;left: 160px;top:20px;border-width: 2px;border-style: solid;border-color: #9AD9EA;color:#787878 }
+#id_subject{height:30px;width: 350px;position: absolute;left: 110px;top:75px;border-width: 2px;border-style: solid;border-color: #9AD9EA;color:#787878}
+#id_message{height:240px;width: 440px;border-width: 2px;border-style: solid;border-color: #9AD9EA;color:#787878;position: relative;left:20px;top:160px;}
+#username{font-size:19px;font-family:Script MT Bold;color: #06B5EA;position: absolute;left: 470px;top: 253px;}
+#subject{font-size:19px;font-family:Script MT Bold;color: #06B5EA;position: absolute;left: 480px;top: 305px;}
+#message{font-size:19px;font-family:Script MT Bold;color: #06B5EA;position: absolute;left: 480px;top: 350px;}
+#save{font-size:19px;font-family:Script MT Bold;color: #06B5EA;position: absolute;left: 320px;top:430px;}
+#send{font-size:19px;font-family:Script MT Bold;color: #06B5EA;position: absolute;left: 390px;top: 430px;}
+#capacity{font-size:19px;font-family:Garamond;color: #06B5EA;position: absolute;left: 760px;top: 720px;}
+.send{font-size:18px;font-family:Garamond;color: #B4B4B4 ;font-weight: bold}
+.sender{position: absolute;left: 570px;top:260px;}
+.recipient{position: absolute;left: 570px;top:285px;}
+.d{position: absolute;left: 470px;top:250px;}
+
+.box22 {  content: "";display: block;clear: both;background-color: #FFFFFF;width: 500px;position: relative;left: 442px;top: 340px; padding-bottom: 20px;}
+.box23{background-color: #FFFFFF;width: 500px;height:130px;position: absolute;left: 450px;top: 230px;}
+.user{font-size:18px;font-family:Garamond;color:#E5AA7A;font-weight: bold;text-align:right;margin-bottom: 15px;margin-right: 10px;}
+.message{font-size:18px;font-family:Garamond;color: #E5AA7A;font-weight: bold;margin-left: 8px;}
+.wrapper{position:relative;background-color: #FFFFFF;width: 500px;margin-top: 10px;padding-bottom: 20px;}
+#id_body{height:140px;width: 400px;border-width: 2px;border-style: solid;border-color: #9AD9EA;color:#787878;margin-left: 40px;margin-top: 30px;}
+
+.sen{font-size:20px;font-family:Garamond;color: #06B5EA;font-weight: bold;position: relative;left:370px;top:10px;border-style: solid; border-color: #9AD9EA}
+.save{font-size:20px;font-family:Garamond;color: #06B5EA;font-weight: bold;position: relative;left:300px;top:-17px;border-style: solid; border-color: #9AD9EA}
+.theLink {text-decoration:none;}
+.pagination {position:absolute; left:470px;top:700px;color: #06B5EA}
+.error{color: #06B5EA;position: absolute;left:400px;top:620px;left:500px;}
+.error1{color: #06B5EA;position: absolute;top:267px;left:480px;}
+.error3{color: #06B5EA;position: absolute;left:400px;top:325px;left:600px;}
+
+.inbox {position: absolute;left:900px;top:680px;left:910px;}
+a{text-decoration:none;color: #959695}

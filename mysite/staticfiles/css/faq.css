@@ -1,0 +1,22 @@
+body{background-color: #C9DB82}
+#box1 {height: 45px; width:2300px; background-color:#99D9EA;position: absolute;left:0px;top:0px;}
+#box2 {height: 60px; width:280px; background-color:#FF7E00;position: absolute;left:526px;top:76px;}
+#box3 {height: 23px; width:100px; background-color:#FF7E00;position: absolute;left:467px;top:123px;}
+#box4  {height: 23px; width:100px;  background-color:#FF7E00;position: absolute;left:770px;top:124px;}
+#font {position: absolute;left:537px;top:75px;font-family: Lora;font-size: 47px;color: #F5E49C;}
+#font2 {position: absolute;left:580px;top:170px;font-family: Lora;font-size: 23px;color: #FF7E00;}
+
+#font8 {position: absolute;left:1050px;top:10px;font-family: Lora;font-size: 18px;color: #FFFFFF}
+#font9 {position: absolute;left:1255px;top:8px;font-family: Lora;font-size: 18px;color: #FFFFFF}
+#font10 {position: absolute;left:1450px;top:8px;font-family: Lora;font-size: 18px;color: #FFFFFF}
+#font11 {position: absolute;left:1230px;top:10px;font-family: Lora;font-size: 23px;color: #FFFFFF}
+#font12 {position: absolute;left:1423px;top:10px;font-family: Lora;font-size: 23px;color: #FFFFFF}
+#font13 {position: absolute;left:23px;top:280px;font-family: Lora;font-size: 23px;color: #FF7E00;font-weight: bold;}
+#font14 {position: absolute;left:23px;top:390px;font-family: Lora;font-size: 23px;}
+.orange {color:#FF7E00;}
+.brown { color: #9C5A3C;}
+li {list-style-type: none;margin-left: 23px;}
+#font15 {position: absolute;left:23px;top:320px;font-family: Lora;font-size: 23px;color: #FF7E00;font-weight: bold;}
+#font23 {position: absolute;left:23px;top:2350px;font-family: Lora;font-size: 23px;color: #FF7E00;font-weight: bold;}
+#font17 {position: absolute;left:23px;top:1800px;font-family: Lora;font-size: 23px;color: #FF7E00;font-weight: bold;}
+.theLink { text-decoration:none; }

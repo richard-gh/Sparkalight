@@ -1,0 +1,30 @@
+
+@font-face {font-family: SourceSansPro-Bold; src: url('SourceSansPro-Bold.TTF');}
+@font-face {font-family: Bellota-Regular; src: url('Bellota-Regular.OTF');}
+@font-face {font-family: Pacifico; src: url('Pacifico.TTF');}
+
+body {background-color: #4CB848}
+
+.container {background-color: #4CB848;height: 800px;width: 600px;margin: auto;}
+.block {width: 580px;height:500px;background-color: #FFFFFF;margin: 20px;position: absolute;left: 479px; top: 260px;border-style:solid;border-color:#919191;border-width:1px;}
+
+
+.box1 {width: 130px;height:36px;background-color: #00B7F3;position: absolute;left: 500px; top: 220px;font-family: Bellota-Regular;font-size:15px;color: #FFFFFF;text-align:center;padding-top: 14px;}
+.box2 {width: 130px;height:36px;background-color: #FF7200;position: absolute;left: 640px; top: 220px;border-style:solid;border-color:#919191;border-width:1px;font-family: Bellota-Regular;font-size:15px;color: #FFFFFF;text-align:center;padding-top: 14px;}
+.box3 {width: 130px;height:36px;background-color: #FCD208;position: absolute;left: 780px; top: 220px;border-style:solid;border-color:#919191;border-width:1px;font-family: Bellota-Regular;font-size:15px;color: #353535;text-align:center;padding-top: 14px;}
+.box4 {width: 700px;height:200px;font-family: Pacifico; ;color: #FFFFFF;font-size: 50px;position: absolute;top:25px;left: 570px;}
+.box5 {width: 220px;height:35px;background-color: #ED1B25;font-family: Bellota-Regular;color: #FFFFFF;font-size: 17px;position: absolute;left: 0px; top:20px;padding-top: 10px;padding-left: 10px;}
+.box6 {width: 70px;height:150px;background-color: #ED1B25;font-family: Bellota-Regular;color: #FFFFFF;font-size: 17px;position: absolute;left: 1400px;top: 0px;padding-top: 20px;padding-left: 8px;}
+
+#id_text {position: absolute;top:140px;left: 650px;    height: 25px;width: 200px;background-color: #4CB848;border-style:solid;border-color:#FFFFFF;border-width:5px;color: #FFFFFF;text-align:center;font-family: Bellota-Regular;font-size:15px;}
+#index {width:50px;position: absolute;left:870px;top: 135px;font-family: Pacifico;color:#FFFFFF;background-color:#4CB848;font-size: 20px;border-style: solid; border-color:#4CB848;}
+#count {position: absolute;left:710px;top: 180px;font-family: Bellota-Regular;color:#FFFFFF;}
+
+.b1 {width: 140px;height:100px;background-color: #FFFFFF;text-align: center;float:left;margin-bottom: 30px;}
+img {margin-top: 10px;}
+p{color: #D47084;font-family: Bellota-Regular;font-size: 15px;}
+.theLink {text-decoration:none;}
+.box14{position: absolute;left:1120px;top: 300px;font-family: Pacifico;color:#E5AA7A;height:130px;width:100px;}
+
+.Link {color:#9C5A3C; text-decoration:none; }
+.pagination {font-family: Pacifico;color:#9C5A3C}

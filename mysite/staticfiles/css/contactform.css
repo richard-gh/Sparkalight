@@ -1,0 +1,21 @@
+@font-face {font-family: Lobster; src: url('Lobster.OTF');}
+@font-face {font-family: Bellota-Regular; src: url('Bellota-Regular.OTF');}
+
+body {background-color: #E4AA7A;}
+.cake1 {background-color: #FFFFFF;height:600px;width: 470px;position: absolute;left: 500px;top: 40px;border-style: solid;border-color: #9AD9EA;border-width: 20px;}
+#cake2 {font-family: Lobster;font-size: 50px;color :#00B7EF;position: absolute; top:80px;left:630px;}
+#cake3 {font-family: Lobster;font-size: 30px;color :#9AD9EA;position: absolute; top:150px;left:670px;}
+select {position: absolute;top:200px;left:660px;width:180px;height:30px;background :#00B7EF;font-family: Lobster;color:#FFFFFF;font-size: 17px;text-align: center;}
+textarea {width:260px;height:200px;position: absolute;top:250px;left:620px;border-width: 5px;border-style: solid;border-color: #9AD9EA;font-family: book antiqua;color:#787878}
+#id_email {width:180px;height:20px;position: absolute;top:470px;left:690px;border-width: 5px;border-style: solid;border-color: #9AD9EA;font-family: book antiqua;color:#787878}
+#cake4{font-family: Lobster;font-size: 20px;color :#00B7EF;position: absolute;top:470px;left:630px;}
+#submit {;font-family: Lobster;font-size: 20px;color :#00B7EF;position: absolute;top:550px;left:700px;}
+#cake6 {font-family: Lobster;font-size: 20px;color :#E4AA7A;position: absolute; top:600px;left:580px;}
+#cake7 {font-family: book antiqua;font-size: 13px;color :#FFFFFF;position: absolute; top:780px;left:5px;}
+#cake8 {font-family: book antiqua;font-size: 13px;color :#FFFFFF;position: absolute; top:780px;left:140px;}
+#cake9 {background-color: #9AD9EA;height: 100px; width: 70px;position: absolute;left:1200px;top:0px;font-size: 15px;color:#FFFFFF;text-align: center;padding-top: 25px;border-bottom:solid; border-color:#FFFFFF;border-width: 2px;font-family: Bellota-Regular;font-weight: bold;}
+#cake10 {position: absolute;top:500px;left:630px;color :#00B7EF; }
+#cake11 {position: absolute;top:300px;left:870px;color :#00B7EF; width:80px;}
+
+.Link {color:#9C5A3C; text-decoration:none; }
+
