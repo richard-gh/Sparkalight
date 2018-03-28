@@ -1,0 +1,6 @@
+Django==1.11.11
+django-el-pagination==3.2.4
+django-friendship==1.5.0
+Pillow==5.0.0
+pytz==2018.3
+sorl-thumbnail==12.4.1

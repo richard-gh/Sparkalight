@@ -114,7 +114,7 @@ class Board(models.Model):
 
 )
     shirt_size = models.CharField(max_length=3200, choices=SHIRT_SIZES)
-    user = models.ForeignKey(Person)
+    user = models.ForeignKey(Person, on_delete=models.CASCADE)
     name = models.CharField(max_length=55)
     profile = models.BooleanField(default=True)
     slug = models.SlugField()
@@ -144,8 +144,8 @@ class Board(models.Model):
 
 
 class Picture(models.Model):
-    user = models.ForeignKey(Person)
-    board = models.ForeignKey(Board,blank=False,null=False,related_name='board')
+    user = models.ForeignKey(Person, on_delete=models.CASCADE)
+    board = models.ForeignKey(Board,blank=False,null=False,related_name='board', on_delete=models.CASCADE)
     description = models.CharField(blank=False,max_length=3200)
     created = models.DateTimeField(auto_now_add=True)
     is_primary = models.BooleanField(default=False)
@@ -166,16 +166,16 @@ class Picture(models.Model):
 
 class BoardComment(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(Person)
+    user = models.ForeignKey(Person, on_delete=models.CASCADE)
     body = models.CharField(max_length=300,blank=True)
-    board = models.ForeignKey(Board)
+    board = models.ForeignKey(Board, on_delete=models.CASCADE)
  
     def __unicode__(self):
         return self.user.username
 
 class LikeBoard(models.Model):
-    user = models.ForeignKey(Person)
-    board = models.ForeignKey(Board)
+    user = models.ForeignKey(Person, on_delete=models.CASCADE)
+    board = models.ForeignKey(Board, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)  
 
 
@@ -196,7 +196,7 @@ class Contact(models.Model):
     Category =models.CharField(max_length=3200,choices=CATEGORY)
     text = models.CharField(blank = False,max_length=200)
     email = models.EmailField(blank= False)
-    user = models.ForeignKey(Person)
+    user = models.ForeignKey(Person, on_delete=models.CASCADE)
 
     def __unicode__(self):
         return self.user.username

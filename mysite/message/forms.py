@@ -1,15 +1,6 @@
 from django import forms 
 from django.contrib.auth.models import User
-from django.forms import extras
-from django.contrib.auth import authenticate, login, logout
-from django.core.exceptions import ObjectDoesNotExist
 from message.models import *
-from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from django.core.exceptions import ValidationError
-
-
-
 
 
 class ReplyForm(forms.Form):
@@ -102,4 +93,4 @@ class CheckBoxForm(forms.ModelForm):
     hidden_field = forms.CharField(widget=forms.HiddenInput())       
     class Meta:
         model = Message
-        field =  ('hidden_field',)  
+        fields = ('hidden_field',)

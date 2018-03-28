@@ -1,6 +1,7 @@
 # Django settings for mysite project.
 import os
 import sys
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 from os.path import join
 
@@ -17,12 +18,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'south.db',      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'south.db',  # Or path to database file if using sqlite3.
+        'USER': '',  # Not used with sqlite3.
+        'PASSWORD': '',  # Not used with sqlite3.
+        'HOST': '',  # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',  # Set to empty string for default. Not used with sqlite3.
     }
 }
 AUTH_USER_MODEL = 'pet.Person'
@@ -84,18 +85,11 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '=q@vxthuczsby7lk+^im_r51jxkpudb08%%ih_tjf7o=p-edf('
-
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
-)
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -112,12 +106,6 @@ ROOT_URLCONF = 'mysite.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-
-
-TEMPLATE_DIRS = (
-    join(BASE_DIR,  'pet/templates/'),
-)
-
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -129,13 +117,11 @@ INSTALLED_APPS = (
     'pet',
     'sorl.thumbnail',
     'accounts',
-    'endless_pagination',
+    'el_pagination',
     'friendship',
     'message',
 
-
 )
-
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -166,22 +152,12 @@ LOGGING = {
     }
 }
 
-
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.request',
-    'django.core.context_processors.static',
-    'django.contrib.auth.context_processors.auth',
-)
-
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'sleepypenguin23@gmail.com'
 EMAIL_HOST_PASSWORD = 'darkwarrior'
 DEFAULT_FROM_EMAIL = 'sleepypenguin23@gmail.com'
-
-
 
 ENDLESS_PAGINATION_PER_PAGE = 5
 ENDLESS_PAGINATION_PREVIOUS_LABEL = 'Previous'
@@ -194,3 +170,19 @@ REVIEW_PAGINATION_NEXT_LABEL = 'Next'
 SEARCH_PAGINATION_PER_PAGE = 16
 SEARCH_PAGINATION_PREVIOUS_LABEL = 'Previous'
 SEARCH_PAGINATION_NEXT_LABEL = 'Next'
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
