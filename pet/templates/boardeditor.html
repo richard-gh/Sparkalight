@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+{% load static %}
+<link rel="stylesheet" href="{% static "css/editboard.css" %}">
+<div class="container">
+
+</div>
+
+<div class="block">
+
+
+    {{ form.hidden_field }}{{ form.hidden_field }}{{ form.hidden_field }}{{ form.hidden_field }}
+
+
+    <p> Edit Board Description</p>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ BoardChangeNameForm.as_p }}
+        <input type="hidden" name="process" value="change"/>
+        <input type="submit" value="find" class="orange"/>
+
+    </form>
+    {% if form %}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="hidden" name="process" value="changename"/>
+            <input type="submit" value="save" class="color"/>
+        </form>
+
+    {% endif %}
+
+
+
+    <p> Change boardname</p>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ board.as_p }}
+        <input type="hidden" name="process" value="third"/>
+        <input type="submit" value="save" class="orange"/>
+    </form>
+
+
+    <p> Special settings for your board</p>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ BoardPrivateForm.as_p }}
+        <input type="hidden" name="process" value="special"/>
+        <input type="submit" value="find" class="orange"/>
+
+    </form>
+
+    {% if forms %}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p> {{ forms.username.profile }}<label for="profile">Board is Public</label>{{ forms.profile }} </p>
+            <p> {{ forms.username.friends }}<label for="friends">Only allow friends to
+                comment</label>{{ forms.friends }} </p>
+            <p> {{ forms.username.comments }}<label for="comments">Enable Comments</label>{{ forms.comments }} </p>
+            <input type="hidden" name="d" value="{{ c.id }}"/>
+
+            <input type="hidden" name="process" value="specials"/>
+            <input type="submit" value="save" class="color"/>
+
+        </form>
+    {% endif %}
+
+</div>
+
+
+<a class="theLink" href="{% url "world:follower" %}">
+    <div class="box1 theLink">FOLLOWER</div>
+</a>
+<a class="theLink" href="{% url "world:following" %}">
+    <div class="box2">FOLLOWING</div>
+</a>
+<a class="theLink" href="{% url "world:search_person" %}">
+    <div class="box3">SEARCH</div>
+</a>
+<div class="box4">edit board</div>
+<a class="theLink" href="{% url "world:profile" person.slug %}">
+    <div class="box5">Return back To profile</div>
+</a>
+<a class="theLink" href="{% url "world:logout_request" %}">
+    <div class="box7">Logout</div>
+</a>

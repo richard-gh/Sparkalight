@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+{% load static %}
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="{% static "css/description.css" %}">
+<body>
+<div class="box1">
+
+    {% load thumbnail %}
+    {% if p.image %}
+        {% thumbnail p.image "x175" upscale=False as im %}<img class="border" src="{{ im.url }}">
+        {% endthumbnail %}{% endif %}
+
+    <div class="box3">Edit Picture Description</div>
+
+    <form method="POST" action="{% url "world:description" p.board.slug p.board.id p.id %}">
+        {% csrf_token %}
+
+        {{ form.primary }}
+
+        {{ form.description }}
+        {{ form.boolean }}
+        <input type="submit" value="save" id="box2"/></input>
+    </form>
+    {{ form.description.errors }}
+
+</div>
+<div class="box6">remove picture</div>
+<div class="box12">set picture primary</div>
+
+
+<a class="theLink" href="{% url "world:profile" person.slug %}">
+    <div class="box11"><br><br>return to profile</div>
+</a>
+
+</body>

@@ -1,0 +1,40 @@
+{% load static %}
+{% load endless %}
+{% load thumbnail %}
+<script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
+
+<link rel="stylesheet" href="{% static "css/profile.css" %}">
+
+
+{% paginate 6,6 board %}
+
+
+<div class="box11">
+
+    {% for b in board %}
+
+        <a class="theLink" href="{% url "world:car" b.slug b.id %}">
+            <div class="box10">{% if b.pic_image %}
+                <div class="picture">{% thumbnail b.pic_image "175x175" crop="175px 175px" as im %}
+                    <img src="{{ im.url }}">
+                {% endthumbnail %}
+                </div>{% else %}
+                <div class="picture"><img src="http://127.0.0.1:8000/media/empty/big-grey.png"></div>{% endif %}
+
+
+
+                <span id="pink"> {{ b.name }}</span></div>
+        </a>
+
+    {% endfor %}
+
+
+</div>
+
+{% get_pages %}
+<div class="paginator">
+    Showing {{ pages.current_start_index }}-{{ pages.current_end_index }} of
+    {{ pages.total_count }}
+    <br>
+    {{ pages }}
+</div>ok

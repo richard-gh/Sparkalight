@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+{% load static %}
+{% load thumbnail %}
+
+
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="{% static "css/friend.css" %}">
+<script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
+<script type="text/javascript" src="{% static "javascript/jquery.columnizer.js" %}"></script>
+
+
+<script type="text/javascript">{% verbatim %}
+    $(function () {
+        $('h1').addClass('dontend');
+        $('.wide').columnize({
+            width: 120,
+            height: 550
+        });
+    });{% endverbatim %}
+</script>
+
+
+<div class="container">
+
+</div>
+
+
+<div class="box14">
+
+    {% if posts.object_list and posts.paginator.num_pages > 1 %}
+        <div class="pagination" style="margin-top: 20px; margin-left: -20px; ">
+
+
+            &nbsp;Page {{ posts.number }} of {{ posts.paginator.num_pages }}<br>
+
+            {% if posts.has_previous %}
+                <a class="Link"
+                   href="{% if formula %}?text={{ formula }}&{% else %}?{% endif %}page={{ posts.previous_page_number }}">newer
+                    entries &lt;&lt; </a>
+            {% endif %}
+            {% if posts.has_next %}
+                <a class="Link"
+                   href="{% if formula %}?text={{ formula }}&{% else %}?{% endif %}page={{ posts.next_page_number }}">
+                    &gt;&gt; older entries</a>
+            {% endif %}
+            </span>
+        </div>
+    {% endif %}
+</div>
+
+<a class="theLink" href="{% url "world:follower" %}">
+    <div class="box1">FOLLOWER</div>
+</a>
+<a class="theLink" href="{% url "world:following" %}">
+    <div class="box2">FOLLOWING</div>
+</a>
+<a class="theLink" href="{% url "world:search_person" %}">
+    <div class="box3">SEARCH</div>
+</a>
+<div class="box4">My friends</div>
+<a class="theLink" href="{% url "world:profile" request.user.slug %}">
+    <div class="box5">Return back To profile</div>
+</a>
+<a class="theLink" href="{% url "world:logout_request" %}">
+    <div class="box7">Logout</div>
+</a>
+<a class="theLink" href="{% url "world:edit_friend_func" %}">
+    <div class="box10">Edit Friend</div>
+</a>
+
+
+<div class="endless_page_template">
+    {% include F %}
+</div></div>
+
+
+<div class="endless_page_template">
+    {% include U %}
+</div>
+<script type="text/javascript" src="{% static "el-pagination/js/el-pagination.js" %}"></script>
+<script type="text/javascript">$.endlessPaginate();</script>

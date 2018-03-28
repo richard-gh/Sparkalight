@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+
+<head>
+    {% load endless %} {% load thumbnail %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/archive.css" %}">
+
+    <script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "javascript/jquery.columnizer.js" %}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('h1').addClass('dontend');
+            $('.wide').columnize({
+                width: 235,
+                height: 520
+            });
+        });
+    </script>
+
+
+    <meta charset="utf-8"/>
+
+
+    {% paginate 6,6 posts using "other_entries_page" %}
+
+
+    <div class="box14">
+        <div class="wide">
+            {% for b in posts %}
+
+                {% if b.image %}
+
+                    <div class="cake5">{% thumbnail b.image "150x150" crop="150px 150px" as im %}
+                        <img alt="thumbnail" src="{{ im.url }}">{% endthumbnail %}
+
+                        <a class="theLink" href="{% url "world:car" b.board.slug b.board.id %}">
+                            <div class="black">"{{ b.board.name }} </div>
+                        </a><a class="theLink" href="{% url "world:profile" b.user.username %}">
+                            <div class="pur">{{ b.user.username }}</div>
+                        </a>
+                        <div class="red">NEW</div>
+                    </div>
+
+                {% endif %}
+
+            {% endfor %}
+
+
+        </div>
+    </div>
+
+
+    {% get_pages %}
+    <div class="b14">
+        Showing {{ pages.current_start_index }}-{{ pages.current_end_index }} of
+        {{ pages.total_count }}
+        <br>
+        {{ pages }}
+    </div>

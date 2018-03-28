@@ -1,0 +1,34 @@
+{% load static %}
+<link rel="stylesheet" href="{% static "css/forms.css" %}">
+
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.email }}
+
+    {{ form.password }}
+    <input type="submit" value="Login" id="submit"/>
+</form>
+
+<ul id="errors">{{ form.email.errors }}</ul>
+<ul id="errors2">{{ form.password.errors }}</ul>
+
+{% if form.non_field_errors %}
+    <ul class='form-errors'>
+        {% for error in form.non_field_errors %}
+            <ul>{{ error }}</ul>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+<div id="light">Welcome To SparkaLight</div>
+<a class="theLink" href="{% url "world:petRegistration" %}">
+    <div id="light2">SparkaLight is a place where we can share , explore and discover our inspirational journey</div>
+</a>
+
+<div id="light3">email</div>
+<div id="light4">password</div>
+<a class="theLink" href="{% url "accounts:forgot-password" %}">
+    <div id="e">!</div>
+</a>

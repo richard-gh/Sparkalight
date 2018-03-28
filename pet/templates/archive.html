@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+
+<head>
+    {% load static %}
+    <script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "javascript/jquery.columnizer.js" %}"></script>
+    <script type="text/javascript" src="{% static "javascript/jquery.lazyload.min.js" %}"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('h1').addClass('dontend');
+            $('.wide').columnize({
+                width: 235,
+                height: 520
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        {% verbatim %}
+            jQuery(document).ready(function ($) {
+                $("img.lazy").lazyload(
+                    {
+                        data_attribute: "orig"
+                    });
+            });{% endverbatim %}
+    </script>
+
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="{% static "css/archive.css" %}">
+    {% load thumbnail %}
+
+</head>
+
+<div class="box3"></div>
+<div class="box4"></div>
+<a class="theLink" href="{% url "world:logout_request" %}">
+    <div class="cake2">logout</div>
+</a>
+
+
+<a class="theLink" href="{% url "world:profile" person.slug %}">
+    <div class="box9">profile</div>
+</a>
+<a class="theLink" href="{% url "message:message" %}">
+    <div class="box10">Inbox</div>
+</a>
+<a class="theLink" href="{% url "world:board_finder" %}">
+    <div class="box11">Explore</div>
+</a>
+<a class="theLink" href="{% url "world:board_creator" %}">
+    <div class="box12">create</div>
+</a>
+<div class="cake1">SparkaLight</div>
+
+<div class="box13">Archive</div>
+
+
+<div class="box15">recent comments</div>
+
+
+<div class="endless_page_template">
+    {% include C %}
+</div>
+
+
+<div class="endless_page_template">
+    {% include P %}
+</div>
+<script type="text/javascript" src="{% static "el-pagination/js/el-pagination.js" %}"></script>
+<script type="text/javascript">$.endlessPaginate();</script>
+
+

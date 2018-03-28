@@ -1,0 +1,172 @@
+
+.minibox {
+    background-color: #F5E49C;
+    color: #000;
+    padding: 0 5px;
+    width: 280px;
+    text-align: center;
+    content: "";
+    display: none;
+    padding-bottom: 30px;
+    padding-top: 10px;
+
+}
+
+.editbox {
+    background-color: #F5E49C;
+    color: #000;
+    padding: 0 5px;
+    width: 280px;
+    height: 500px;
+    text-align: center;
+    content: "";
+    display: none;
+    padding-bottom: 70px;
+    padding-top: 10px;
+    position: absolute;
+    left: 300px;
+    top: 1px;
+
+}
+
+.Font {
+    font-family: Script MT Bold;
+    font-size: 20px;
+    color: #FF7E00;
+    left: 100px;
+    margin-top: 10px;
+}
+
+.Font1 {
+    font-family: Script MT Bold;
+    font-size: 20px;
+    color: #9C5A3C;
+    left: 100px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.Believe {
+    font-family: Script MT Bold;
+    font-size: 18px;
+    color: #9C5A3C;
+    left: 100px;
+    position: relative;
+    left: 100px;
+    top: 30px;
+
+}
+
+.line {
+
+    color: #9C5A3C;
+    left: 100px;
+    margin: 12px;
+    position: relative;
+    left: -60px;
+    top: -30px;
+}
+
+.list {
+
+    color: #E5AA7A;
+    left: 100px;
+    background-color: #FFFFFF;
+    font-size: 20px;
+
+}
+
+.one {
+    position: absolute;;
+    left: 10px;
+    top: 120px;
+}
+
+.two {
+    position: absolute;;
+    left: 10px;
+    top: 200px;
+}
+
+.three {
+    position: absolute;;
+    left: 10px;
+    top: 280px;
+}
+
+.four {
+    position: absolute;;
+    left: 10px;
+    top: 370px;
+}
+
+.five {
+    position: absolute;;
+    left: 10px;
+    top: 450px;
+}
+
+.save {
+    position: absolute;;
+    left: 120px;
+    top: 540px;
+}
+
+.pus {
+    background-color: #F5E49C;
+    color: #9C5A3C;
+    width: 260px;
+    margin-bottom: 20px;
+    position: relative;
+    top: 10px;
+
+}
+
+.textbox {
+    background-color: #F5E49C;
+    color: #9C5A3C;
+    min-height: 25px;
+    width: 200px;
+    text-align: left;
+    font-family: Script MT Bold;
+    font-size: 18px;
+    text-decoration: underline;
+    line-height: 150%
+}
+
+.checkbox {
+    width: 50px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 50px;
+    font-size: 30px;
+}
+
+.BucketList {
+
+    color: #9C5A3C;
+    font-family: Script MT Bold;
+    margin-top: 50px;
+
+}
+
+textarea {
+    width: 200px;
+    height: 60px;
+    margin-bottom: 20px;
+    background-color: #F5E49C;
+    border-style: solid;
+    border-color: #E5AA7A;
+}
+
+#moveBox {
+    display: block;
+    width: 50px;
+    text-align: center;
+    float: right;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+}

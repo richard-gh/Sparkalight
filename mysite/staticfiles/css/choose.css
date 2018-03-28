@@ -1,7 +1,0 @@
-body {background-color: #9AD9EA;}
-
-.box1{background-color: #FF7E00; height: 250px; width: 300px;position: absolute;left: 400px;top:150px;font-size:35px;font-family:Lobster,lobsterwebfont;;text-align:center;color: #FFFFFF}
-.box2{background-color: #FF7E00; height: 250px; width: 300px;position: absolute;left: 850px;top:150px;font-size:45px;font-family:Lobster,lobsterwebfont;;text-align:center;color: #FFFFFF}
-@font-face {font-family: Lobster; src: url('Lobster.OTF');}
-@font-face {font-family: lobsterwebfont; src: url('lobsterwebfont.EOT');}
-.theLink {text-decoration:none;}

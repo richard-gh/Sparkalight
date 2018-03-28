@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+{% load static %}
+{% load thumbnail %}
+
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="{% static "css/following.css" %}">
+<script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
+
+
+<div class="container"></div>
+
+
+<div class="endless_page_template">
+    {% include page_template %}
+</div>
+<script type="text/javascript" src="{% static "el-pagination/js/el-pagination.js" %}"></script>
+<script type="text/javascript">$.endlessPaginate();</script>
+
+
+<a class="theLink" href="{% url "world:follower" %}">
+    <div class="box1">FOLLOWER</div>
+</a>
+<a class="theLink" href="{% url "world:my_friend" %}">
+    <div class="box2">FRIEND</div>
+</a>
+<a class="theLink" href="{% url "world:search_person" %}">
+    <div class="box3">SEARCH</div>
+</a>
+<div class="box4">People your Sparkling</div>
+<a class="theLink" href="{% url "world:profile" request.user.slug %}">
+    <div class="box5">Return back To profile</div>
+</a>
+<a class="theLink" href="{% url "world:logout_request" %}">
+    <div class="box6">Logout</div>
+</a>
+<a class="theLink" href="{% url "world:following_all" %}">
+    <div class="box7">Edit People Your following</div>
+</a>

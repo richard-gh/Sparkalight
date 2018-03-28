@@ -1,0 +1,134 @@
+<html>
+<head>
+    <title>Page</title>
+
+    <style type="text/css">
+        body {
+            background-color: #F5E49C
+        }
+
+        .wrapper {
+            background-color: #FFFFFF;
+            width: 440px;
+            height: 530px;
+            position: absolute;
+            left: 500px;
+            top: 100px;
+            border-color: #93DBE9;
+            border-style: solid;
+            border-width: 15px;
+        }
+
+        @font-face {
+            font-family: Lora;
+            src: url('{{ STATIC_URL }}css/Lora-Regular.TTF');
+        }
+
+        @font-face {
+            font-family: Bellota-Regular;
+            src: url('{{ STATIC_URL }}css/Bellota-Regular.OTF');
+        }
+
+        .font {
+            font-family: Lora;
+            font-size: 35px;
+            color: #93DBE9;
+            font-weight: bold;
+            position: absolute;
+            left: 40px;
+            top: 30px;
+        }
+
+        .thank {
+            color: #72B395;
+            font-family: Lora;
+            font-weight: bold;
+            font-size: 17px;
+            position: absolute;
+            left: 20px;
+            top: 110px;
+        }
+
+        #id_final {
+            position: absolute;
+            left: 20px;
+            top: 190px;
+            border-style: solid;
+            border-color: #DCDCDC;
+            width: 390px;
+            height: 150px;
+            color: #787878;
+        }
+
+        .free {
+            color: #93DBE9;
+            font-family: Lora;
+            font-weight: bold;
+            font-size: 16px;
+            position: absolute;
+            left: 20px;
+            top: 350px;
+
+        }
+
+        .info {
+            color: #B4B4B4;
+            font-family: Lora;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 14px;
+            position: absolute;
+            left: 20px;
+            top: 400px;
+            text-decoration: underline;
+
+        }
+
+        .submit {
+            background-color: #93DBE9;
+            font-size: 20px;
+            font-family: Lora;
+            color: #FFFFFF;
+            font-weight: bold;
+            border-style: none;
+            position: absolute;
+            left: 140px;
+            top: 480px;
+        }
+
+        .ribbon {
+            background-color: #93DBE9;
+            width: 70px;
+            height: 140px;
+            position: absolute;
+            left: 1170px;
+            top: 0px;
+            font-family: Bellota-Regular;
+            color: #FFFFFF;
+            padding-left: 5px;
+            font-size: 15px;
+        }
+
+        .theLink {
+            text-decoration: none;
+        }
+    </style>
+    <form method="POST">{% csrf_token %}
+
+
+        <div class="wrapper">
+            <span class="font"> Account termination </span>
+            <span class="thank"> Before you leave , we thank you for using this service and good luck in the future </span>
+            {{ form.final }}
+            <span class="free"> Feel free to leave a reason for why your leaving </span>
+            <span class="info">For more info on how we terminate your account please
+check the topic under the heading termination in the terms and condition</span>
+            <input type="submit" value="Terminate" class="submit">
+        </div>
+
+        <a class="theLink" href="{% url "world:profile" request.user.slug %}">
+            <div class="ribbon"><br><br> Return To profile
+            </div>
+        </a>
+
+    </form>

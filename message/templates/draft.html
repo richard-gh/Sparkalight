@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN""http://www.w3.org/TR/html4/strict.dtd">
+{% load static %}
+<link rel="stylesheet" href="{% static "css/inbox.css" %}">
+
+<script type="text/javascript" src="{% static "javascript/jquery-1.10.1.min.js" %}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#deleteBttn").click(function (event) {
+            var selectedList = "";
+            var selectCount = $(":checked.messages").length;
+            if (selectCount == 0) {
+                alert("Please select atleast one message to delete.");
+                return;
+
+            }
+            else if (confirm("Are you sure you want to delete the selected message(s)?")) {
+                $(":checked.messages").each(function () {
+                    if (selectedList == "") {
+                        selectedList = $(this).val();
+                    }
+                    else {
+                        selectedList += "~" + $(this).val();
+                    }
+                });
+                if (selectedList != "") {
+                    $("#hidden_field").val(selectedList);
+                    $("#messageForm").submit();
+                }
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    function toggle(source) {
+        checkboxes = document.getElementsByName('check');
+        for (var i = 0, n = checkboxes.length; i < n; i++) {
+            checkboxes[i].checked = source.checked;
+        }
+    }
+</script>
+
+
+<div class="box3"></div>
+<div class="box4"></div>
+<a class="theLink" href="{% url "world:profile" person.slug %}">
+    <div class="box9">profile</div>
+</a>
+<a class="theLink" href="{% url "world:following" %}">
+    <div class="box10">following</div>
+</a>
+<a class="theLink" href="{% url "world:board_finder" %}">
+    <div class="box11">Explore</div>
+</a>
+<a class="theLink" href="{% url "world:board_creator" %}">
+    <div class="box12">create</div>
+</a>
+<div class="cake1">SparkaLight</div>
+<a class="theLink" href="{% url "message:create" %}">
+    <div class="box16">create</div>
+</a>
+<a class="theLink" href="{% url "message:message" %}">
+    <div class="box17">Inbox</div>
+</a>
+
+{% if sentmessage %}
+    <a class="theLink" href="{% url "message:draft" %}">
+        <div class="box18">draft</div>
+    </a>
+{% else %}
+
+    <a class="theLink" href="{% url "message:sent_message" %}">
+        <div class="box18">Sent Message</div>
+    </a>{% endif %}
+
+{% if sentmessage %}
+    <div class="box13">sent messages</div>{% else %}
+    <div class="box13">draft</div>{% endif %}
+
+<div class="box15">
+
+    <div class="box19">Sender</div>
+    <div class="box20">Subject</div>
+
+
+    <form method="POST" id="messageForm">
+        {% csrf_token %}
+
+
+
+        {% for m in posts %}
+
+            <a class="theLink" href="{% url "world:read_draft" m.id %}">
+
+                <div class="username">{{ m.user.username }}</div>
+                <div class="description">{{ m.body }}</div>
+            </a>
+
+            <input type="checkbox" name="check" value="{{ m.id }}" class="messages id_check">
+
+
+            </a>
+
+
+
+
+        {% endfor %}
+
+        <input type="hidden" value="" id="hidden_field" name="hidden_field"/>
+        <input type="button" id="deleteBttn" value="Delete" class="box21"/>
+
+    </form>
+
+</div>
+
+
+</div>
+
+
+<!-- Next/Prev page links  -->
+{% if posts.object_list and posts.paginator.num_pages > 1 %}
+    <div class="pagination" style="margin-top: 20px; margin-left: -20px; ">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                    <a href="?page={{ posts.previous_page_number }}">newer entries &lt;&lt; </a>
+                {% endif %}
+
+                <span class="current">
+                    &nbsp;Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+                </span>
+
+                {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}"> &gt;&gt; older entries</a>
+                {% endif %}
+            </span>
+    </div>
+{% endif %}
+
+<input type="checkbox" onClick="toggle(this)" class="inbox"/>
