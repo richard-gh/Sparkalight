@@ -43,3 +43,7 @@ Temporary Items
 .apdisk
 .idea/
 venv/
+db.sqlite3
+pet/migrations
+message/migrations
+accounts/migrations
