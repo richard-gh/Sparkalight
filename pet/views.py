@@ -18,12 +18,17 @@ from django.shortcuts import render, get_object_or_404
 from el_pagination.decorators import page_template
 from friendship.models import Friend, Follow, FriendshipRequest
 from sorl.thumbnail import get_thumbnail, delete
-
 from mysite import settings
 from pet.forms import SearchBoardForm, SearchForm, UserRegistration, PersonForm, BoardChangeNameForm, BoardForm, \
     LoginForm, ProfileForm, BoardDeleteForm, PictureForm, BoardPrivateForm, BoardDescriptionForm, SpecialBoardForm, \
     BoardNameForm, ContactForm, DescriptionForm, BoardCommentForm, BoardTransferForm
 from pet.models import Person, Board, BoardComment, LikeBoard, Picture, Contact
+from django.shortcuts import redirect
+
+
+def index(request):
+    ### Placeholder index page just redirects to login.
+    return redirect('/login')
 
 
 @login_required

@@ -9,11 +9,13 @@ import django.contrib.auth.urls
 import pet.urls
 import message.urls
 import accounts.urls
+import pet.views
 
 admin.autodiscover()
 
 urlpatterns = [
     url(r'', include(pet.urls, namespace='world')),
+    url(r'$', pet.views.index),
     url(r'^account/', include(django.contrib.auth.urls)),
     url(r'^account/', include(accounts.urls, namespace="accounts")),
     url(r'^secert/', include(admin.site.urls)),
