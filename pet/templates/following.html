@@ -3,7 +3,7 @@
 {% load thumbnail %}
 
 <meta charset="utf-8"/>
-<link rel="stylesheet" href="{% static "css/following.css" %}">
+<link rel="stylesheet" href="{% static "css/show_following.css" %}">
 <script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
 
 
@@ -17,7 +17,7 @@
 <script type="text/javascript">$.endlessPaginate();</script>
 
 
-<a class="theLink" href="{% url "world:follower" %}">
+<a class="theLink" href="{% url "world:show_followers" %}">
     <div class="box1">FOLLOWER</div>
 </a>
 <a class="theLink" href="{% url "world:my_friend" %}">
@@ -34,5 +34,5 @@
     <div class="box6">Logout</div>
 </a>
 <a class="theLink" href="{% url "world:following_all" %}">
-    <div class="box7">Edit People Your following</div>
+    <div class="box7">Edit People Your show_following</div>
 </a>

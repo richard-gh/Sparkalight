@@ -2,8 +2,11 @@ import json
 import math
 from datetime import datetime, timedelta
 from itertools import chain
+
+from django.contrib.auth import authenticate
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.core.urlresolvers import reverse
 from django.db.models import Count
@@ -12,16 +15,13 @@ from django.http import Http404
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 from el_pagination.decorators import page_template
 from friendship.models import Friend, Follow, FriendshipRequest
 from sorl.thumbnail import get_thumbnail, delete
+
 from mysite import settings
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
-from pet.forms import SearchBoardForm, SearchForm, UserRegistration, PersonForm, BoardChangeNameForm, BoardForm,\
-    LoginForm, ProfileForm, BoardDeleteForm, PictureForm, BoardPrivateForm, BoardDescriptionForm, SpecialBoardForm,\
+from pet.forms import SearchBoardForm, SearchForm, UserRegistration, PersonForm, BoardChangeNameForm, BoardForm, \
+    LoginForm, ProfileForm, BoardDeleteForm, PictureForm, BoardPrivateForm, BoardDescriptionForm, SpecialBoardForm, \
     BoardNameForm, ContactForm, DescriptionForm, BoardCommentForm, BoardTransferForm
 from pet.models import Person, Board, BoardComment, LikeBoard, Picture, Contact
 
@@ -55,7 +55,7 @@ def search_person(request):
 # SHOW PEOPLE WHO FOLLOW YOU
 @page_template('pagination.html')
 @login_required
-def follower(request, template='follower.html', extra_context=None):
+def show_followers(request, template='follower.html', extra_context=None):
     Follower = "follower"
     context = {
         'posts': request.user.followers.all(),
@@ -65,13 +65,13 @@ def follower(request, template='follower.html', extra_context=None):
     if extra_context is not None:
         context.update(extra_context)
 
-    return render_to_response(template, context, context_instance=RequestContext(request))
+    return render(request, template, context)
 
 
 # SHOW PEOPLE WHO YOU ARE FOLLOWING
 @page_template('pagination.html')
 @login_required
-def following(request, template='following.html', extra_context=None):
+def show_following(request, template='following.html', extra_context=None):
     Following = "following"
     context = {
         'posts': request.user.following.all(),
@@ -82,8 +82,7 @@ def following(request, template='following.html', extra_context=None):
     if extra_context is not None:
         context.update(extra_context)
 
-    return render_to_response(
-        template, context, context_instance=RequestContext(request))
+    return render(request, template, context)
 
 
 @page_template('uninvitedpagination.html', key='other_entries_page')
@@ -101,8 +100,7 @@ def my_friend(request, template='friend.html', extra_context=None):
     if extra_context is not None:
         context.update(extra_context)
 
-    return render_to_response(
-        template, context, context_instance=RequestContext(request))
+    return render(request, template, context)
 
 
 @login_required
@@ -130,7 +128,7 @@ def archive(request, template='archive.html', extra_context=None):
     if extra_context is not None:
         context.update(extra_context)
 
-    return render_to_response(template, context, context_instance=RequestContext(request))
+    return render(request, template, context)
 
 
 @login_required
@@ -316,7 +314,7 @@ def profile(request, slug, template='profile.html', extra_context=None):
 
         if extra_context is not None:
             context.update(extra_context)
-        return render_to_response(template, context, context_instance=RequestContext(request))
+        return render(request, template, context)
 
     return render(request, 'profile.html', )
 
@@ -586,8 +584,7 @@ def following_all(request, template='editfollowingall.html', extra_context=None)
     if extra_context is not None:
         context.update(extra_context)
 
-    return render_to_response(
-        template, context, context_instance=RequestContext(request))
+    return render(request, template, context)
 
 
 @page_template('page.html')
@@ -603,8 +600,7 @@ def edit_friend_func(request, template='editfriend.html', extra_context=None):
     if extra_context is not None:
         context.update(extra_context)
 
-    return render_to_response(
-        template, context, context_instance=RequestContext(request))
+    return render(request, template, context)
 
 
 def whatspark(request):
@@ -728,8 +724,8 @@ def car(request, id, slug, template='cars.html', extra_context=None):
 
     if extra_context is not None:
         context.update(extra_context)
-    return render_to_response(
-        template, context, context_instance=RequestContext(request))
+    return render(request,
+                  template, context)
 
 
 def post_comment(request):
@@ -776,6 +772,7 @@ def like(request):
                 return HttpResponse(json.dumps({'success': 'false'}), content_type="application/json")
             like_count = car_obj.likeboard_set.count()
             return HttpResponse(json.dumps({'success': 'true', 'count': like_count}), content_type="application/json")
+        return HttpResponse(json.dumps({'success': 'false'}), content_type="application/json")
     else:
         return HttpResponse(
             json.dumps({'success': 'false', "msg": "Your session has expired. Please login to post a comment."}),
@@ -853,7 +850,7 @@ def delete_comment(request):
 def board_finder(request):
     form = SearchBoardForm()
     person = Person.objects.get(username=request.user)
-    return render_to_response("search.html", {'form': form, 'person': person}, context_instance=RequestContext(request))
+    return render(request, "search.html", {'form': form, 'person': person})
 
 
 def search_boards(request):

@@ -25,12 +25,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    'pet',
     'sorl.thumbnail',
     'accounts',
     'el_pagination',
     'friendship',
     'message',
+    'pet',
 ]
 
 MIDDLEWARE = [
@@ -144,7 +144,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'sleepypenguin23@gmail.com'
-EMAIL_HOST_PASSWORD = 'darkwarrior'
+EMAIL_HOST_PASSWORD = 'password'
 DEFAULT_FROM_EMAIL = 'sleepypenguin23@gmail.com'
 
 ENDLESS_PAGINATION_PER_PAGE = 5

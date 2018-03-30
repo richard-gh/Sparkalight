@@ -21,7 +21,7 @@
 <div class="block">
     <br>
 
-    <c> Click on a user if you wish to <br>stop following them</c>
+    <c> Click on a user if you wish to <br>stop show_following them</c>
 
 
 </div>
@@ -34,16 +34,16 @@
 <script type="text/javascript">$.endlessPaginate();</script>
 
 
-<a class="theLink" href="{% url "world:follower" %}">
+<a class="theLink" href="{% url "world:show_followers" %}">
     <div class="box1">FOLLOWER</div>
 </a>
-<a class="theLink" href="{% url "world:following" %}">
+<a class="theLink" href="{% url "world:show_following" %}">
     <div class="box2">FOLLOWING</div>
 </a>
 <a class="theLink" href="{% url "world:search_person" %}">
     <div class="box3">SEARCH</div>
 </a>
-<div class="box4">Settings for the people your following</div>
+<div class="box4">Settings for the people your show_following</div>
 <a class="theLink" href="{% url "world:profile" request.user.slug %}">
     <div class="box5">Return back To profile</div>
 </a>

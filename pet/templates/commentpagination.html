@@ -1,27 +1,18 @@
 {% load static %}
 <link rel="stylesheet" href="{% static "css/archive.css" %}">
-{% load endless %}
+{% load el_pagination_tags %}
 
 
-{% paginate 5,5 comment using "other" %}
 
 <div class="box16">
 
+    {% paginate comment %}
     {% for c in comment %}
         <div class="box17">"{{ c.body }}"<br><a class="theLink" href="{% url "world:profile" c.user.username %}">
             <div class="purple">was posted by {{ c.user.username }}</div>
         </a><a class="theLink" href="{% url "world:car" c.board.slug c.board.id %}">
-            <div class="white">
-            {{ c.board.name }}</a>
+            <div class="white">{{ c.board.name }}</div></a>
         </div></div>
 
     {% endfor %}
-
-
-{% get_pages %}
-<div class="b15">
-    Showing {{ pages.current_start_index }}-{{ pages.current_end_index }} of
-    {{ pages.total_count }}
-    </br>
-    {{ pages }}
-</div>
+    {% show_pages %}

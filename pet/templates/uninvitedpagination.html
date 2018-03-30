@@ -1,11 +1,10 @@
-{% load endless %}
+{% load el_pagination_tags %}
 {% load thumbnail %}
-
-{% paginate 1,1 uninvited using "other_entries_page" %}
 
 
 {% if uninvited %}
     <div class="box9">Friend Request</div>
+    {% paginate uninvited %}
     <div class="box8">{% for u in uninvited %}
 
     <div class="b1">
@@ -23,19 +22,7 @@
 
 
 {% endfor %}
+    {% show_pages %}
 </div>
 {% endif %}
 
-
-{% if uninvited %}
-
-    <div class="uninvited">
-
-        {% get_pages %}
-
-        Showing {{ pages.current_start_index }}-{{ pages.current_end_index }} of
-        {{ pages.total_count }}
-        </br>
-        {{ pages }}
-    </div>
-{% endif %}

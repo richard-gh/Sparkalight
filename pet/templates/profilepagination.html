@@ -1,16 +1,14 @@
 {% load static %}
-{% load endless %}
 {% load thumbnail %}
+{% load el_pagination_tags %}
 <script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
 
 <link rel="stylesheet" href="{% static "css/profile.css" %}">
 
 
-{% paginate 6,6 board %}
-
-
 <div class="box11">
 
+    {% paginate board %}
     {% for b in board %}
 
         <a class="theLink" href="{% url "world:car" b.slug b.id %}">
@@ -27,14 +25,7 @@
         </a>
 
     {% endfor %}
+    {% show_pages %}
 
 
 </div>
-
-{% get_pages %}
-<div class="paginator">
-    Showing {{ pages.current_start_index }}-{{ pages.current_end_index }} of
-    {{ pages.total_count }}
-    <br>
-    {{ pages }}
-</div>ok

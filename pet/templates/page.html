@@ -1,12 +1,11 @@
-{% load endless %}
+{% load el_pagination_tags %}
 {% load thumbnail %}
 
-{% paginate 12,12 posts %}
 
 {% if EditFollowing %}
 
     <div class="box8">
-
+        {% paginate posts %}
         {% for f in posts %}
             <a class="theLink" href="{% url "world:follower_remove" f.followee.username %}
 ">
@@ -17,15 +16,13 @@
                 {% endif %}<p> {{ f.followee }} </p></div>
             </a>
         {% endfor %}
-
+    {% show_pages %}
     </div>
-
 {% endif %}
 
 {% if EditFriend %}
-
     <div class="box8">
-
+        {% paginate posts %}
         {% for f in posts %}
             <a class="theLink" href="{% url "world:friendship_cancel" f.username %}">
                 <div class="b1">  {% if f.image %}{% thumbnail f.image "60x60" crop="center" as im %}
@@ -35,19 +32,8 @@
                 </div>
             </a>
         {% endfor %}
-
-
+        {% show_pages %}
     </div>
 
 {% endif %}
 
-
-
-
-{% get_pages %}
-<div class="paginator">
-    Showing {{ pages.current_start_index }}-{{ pages.current_end_index }} of
-    {{ pages.total_count }}
-    </br>
-    {{ pages }}
-</div>

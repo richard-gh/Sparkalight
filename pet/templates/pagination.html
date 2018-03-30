@@ -1,22 +1,17 @@
 {% load static %}
-{% load endless %}
+{% load el_pagination_tags %}
 {% load thumbnail %}
 <script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
 
-{% paginate 16,16 posts %}
-
-
 <div class="block">
 
+    {% paginate posts %}
     {% for f in posts %}
-
 
         {% if Follower %}{% load thumbnail %}
 
             <a class="theLink" href="{% url "world:profile" f.follower.username %}">
-
                 <div class="b1">
-
                     {% if f.follower.image %}{% thumbnail f.follower.image "60x60" crop="center" as im %}
                         <img src="{{ im.url }}">
                     {% endthumbnail %}{% else %}
@@ -29,6 +24,7 @@
             </a>
 
         {% endif %}
+        {% show_pages %}
 
 
 
