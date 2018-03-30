@@ -28,7 +28,7 @@ from django.shortcuts import redirect
 
 def index(request):
     ### Placeholder index page just redirects to login.
-    return redirect('/login')
+    return redirect('/login/')
 
 
 @login_required
