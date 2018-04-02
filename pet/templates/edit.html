@@ -41,6 +41,7 @@
         <p>{{ deleteboard.board.errors }}<label for="id_board">Board:</label> {{ deleteboard.board }}</p>
         <input type="hidden" name="process" value="fifth">
         <input type="submit" value="Delete" id="delete">
+    </div>
 
 </form>
 
@@ -48,9 +49,9 @@
 
 <div id="error">{{ form.description.errors }} </div>
 
-<a class="theLink" href="{% url "accounts:termination" %}"><span id="termination"> Account termination </span></a>
+<a class="theLink" href="{% url "termination" %}"><span id="termination"> Account termination </span></a>
 
-<a class="theLink" href="{% url "accounts:change_email" %}">
+<a class="theLink" href="{% url "change_email" %}">
     <div class="box1">Change Email</div>
 </a>
 <a class="theLink" href="{% url "world:faq" %}">
@@ -66,6 +67,6 @@
 <a class="theLink" href="{% url "world:logout_request" %}">
     <div class="box7">Logout</div>
 </a>
-<a class="theLink" href="{% url "django.contrib.auth.views.password_change" %}">
+<a class="theLink" href="{% url "change" %}">
     <div class="box8">change password</div>
 </a>

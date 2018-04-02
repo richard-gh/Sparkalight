@@ -1,14 +1,12 @@
 {% load static %}
-{% load endless %}
-{% load thumbnail %}
-
-{% paginate 5,5 images %}
+{% load el_pagination_tags %}{% load thumbnail %}
 
 
 <div class="box2 ColorChange">
     <div class="wide ColorChange">
 
 
+        {% paginate images %}
         {% for pet in images %}
 
 
@@ -36,7 +34,9 @@
 
             </div>
 
-        {% endfor %}</div>
+        {% endfor %}
+    {% show_pages %}
+    </div>
 </div>
 
 

@@ -222,7 +222,6 @@ def pet_registration(request):
                 username=form.cleaned_data['username'],
                 email=form.cleaned_data['email'],
                 date_of_birth=form.cleaned_data['date_of_birth']
-
             )
             password = form.cleaned_data['password']
             user.is_active = True
@@ -233,7 +232,6 @@ def pet_registration(request):
                 username=form.cleaned_data['username'],
                 password=form.cleaned_data['password']
             )
-
             login(request, person)
             return render(request, 'choose.html')
 
@@ -729,8 +727,7 @@ def car(request, id, slug, template='cars.html', extra_context=None):
 
     if extra_context is not None:
         context.update(extra_context)
-    return render(request,
-                  template, context)
+    return render(request, template, context)
 
 
 def post_comment(request):
