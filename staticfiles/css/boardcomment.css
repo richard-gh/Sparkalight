@@ -85,7 +85,7 @@ img {
 
 @font-face {
     font-family: HoneyScript-SemiBold;
-    src: url('{{ STATIC_URL }}css/HoneyScript-SemiBold.TTF');
+    src: url('{{ STATIC_URL }}css/HoneyScript-SemiBold.ttf');
 }
 
 @font-face {
@@ -95,17 +95,17 @@ img {
 
 @font-face {
     font-family: Lobster;
-    src: url('{{ STATIC_URL }}css/Lobster.OTF');
+    src: url('{{ STATIC_URL }}css/Lobster.otf');
 }
 
 @font-face {
     font-family: Lora;
-    src: url('{{ STATIC_URL }}css/Lora-Regular.TTF');
+    src: url('{{ STATIC_URL }}css/Lora-Regular.ttf');
 }
 
 @font-face {
     font-family: Quicksand_Book;
-    src: url('{{ STATIC_URL }}css/Quicksand_Book.OTF');
+    src: url('{{ STATIC_URL }}css/Quicksand_Book.otf');
 }
 
 @font-face {
@@ -115,7 +115,7 @@ img {
 
 @font-face {
     font-family: Pacifico;
-    src: url('Pacifico.TTF');
+    src: url('Pacifico.ttf');
 }
 
 .wide {

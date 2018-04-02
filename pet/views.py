@@ -742,11 +742,11 @@ def post_comment(request):
                                         content_type="application/json")
                 car_obj = Board.objects.get(pk=car_id)
                 if not car_obj.comments:
-                    return HttpResponse(json.dumps({'success': 'false', "msg": "Invalid request"}),
+                    return HttpResponse(json.dumps({'success': 'false', "msg": "Comments are disabled"}),
                                         content_type="application/json")
-                if not car_obj.friends:
+                if car_obj.friends:
                     if not Friend.objects.are_friends(request.user, car_obj.user):
-                        return HttpResponse(json.dumps({'success': 'false', "msg": "Invalid request"}),
+                        return HttpResponse(json.dumps({'success': 'false', "msg": "Only friends can comment"}),
                                             content_type="application/json")
                 review_obj = BoardComment.objects.create(user=request.user, body=body, board=car_obj)
 

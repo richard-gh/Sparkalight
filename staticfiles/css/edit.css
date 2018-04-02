@@ -1,16 +1,16 @@
 @font-face {
     font-family: SourceSansPro-Bold;
-    src: url('SourceSansPro-Bold.TTF');
+    src: url('SourceSansPro-Bold.ttf');
 }
 
 @font-face {
     font-family: Pacifico;
-    src: url('Pacifico.TTF');
+    src: url('Pacifico.ttf');
 }
 
 @font-face {
     font-family: Bellota-Regular;
-    src: url('Bellota-Regular.OTF');
+    src: url('Bellota-Regular.otf');
 }
 
 body {

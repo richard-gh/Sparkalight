@@ -4,7 +4,7 @@ body {
 
 @font-face {
     font-family: Bellota-Regular;
-    src: url('Bellota-Regular.OTF');
+    src: url('Bellota-Regular.otf');
 }
 
 .box1 {
@@ -21,12 +21,12 @@ body {
 
 @font-face {
     font-family: Lobster;
-    src: url('Lobster.OTF');
+    src: url('Lobster.otf');
 }
 
 @font-face {
     font-family: lobsterwebfont;
-    src: url('lobsterwebfont.EOT');
+    src: url('lobsterwebfont.eot');
 }
 
 #box2 {

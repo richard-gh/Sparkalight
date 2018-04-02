@@ -4,17 +4,17 @@ body {
 
 @font-face {
     font-family: HoneyScript-SemiBold;
-    src: url('HoneyScript-SemiBold.TTF');
+    src: url('HoneyScript-SemiBold.ttf');
 }
 
 @font-face {
     font-family: honeyscript-semibold-webfont;
-    src: url('honeyscript-semibold-webfont.EOT');
+    src: url('honeyscript-semibold-webfont.eot');
 }
 
 @font-face {
     font-family: Bellota-Regular;
-    src: url('Bellota-Regular.OTF');
+    src: url('Bellota-Regular.otf');
 }
 
 @font-face {
@@ -24,7 +24,7 @@ body {
 
 @font-face {
     font-family: Pacifico;
-    src: url('Pacifico.TTF');
+    src: url('Pacifico.ttf');
 }
 
 .box1 {
@@ -335,7 +335,7 @@ img {
 
 .box25 {
     font-family: Book Antiqua;
-    color: #9C5A3C,
+    color: #9C5A3C;
     font-size: 150px;
 }
 

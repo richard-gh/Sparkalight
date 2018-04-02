@@ -1,16 +1,16 @@
 @font-face {
     font-family: Lobster;
-    src: url('Lobster.OTF');
+    src: url('Lobster.otf');
 }
 
 @font-face {
     font-family: Pacifico;
-    src: url('Pacifico.TTF');
+    src: url('Pacifico.ttf');
 }
 
 @font-face {
     font-family: lobsterwebfont;
-    src: url('lobsterwebfont.EOT');
+    src: url('lobsterwebfont.eot');
 }
 
 body {

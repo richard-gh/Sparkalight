@@ -4,12 +4,12 @@ body {
 
 @font-face {
     font-family: Bellota-Regular;
-    src: url('Bellota-Regular.OTF');
+    src: url('Bellota-Regular.otf');
 }
 
 @font-face {
     font-family: Pacifico;
-    src: url('Pacifico.TTF');
+    src: url('Pacifico.ttf');
 }
 
 .box1 {
@@ -27,17 +27,17 @@ body {
 
 @font-face {
     font-family: Lobster;
-    src: url('Lobster.OTF');
+    src: url('Lobster.otf');
 }
 
 @font-face {
     font-family: lobsterwebfont;
-    src: url('lobsterwebfont.EOT');
+    src: url('lobsterwebfont.eot');
 }
 
 @font-face {
     font-family: Quicksand_Book;
-    src: url('Quicksand_Book.OTF');
+    src: url('Quicksand_Book.otf');
 }
 
 #box2 {
