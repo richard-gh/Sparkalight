@@ -8,7 +8,7 @@
 <a class="theLink" href="{% url "world:term" %}"><span id="cake7">term and condition</span></a>
 <a class="theLink" href="{% url "world:privacy" %}"><span id="cake8">privacy and policy</span></a>
 
-<a class="theLink" href="{% url "world:profile" person.slug %}"><span id="cake9">Return to profile</span></a>
+<a class="theLink" href="{% url "world:profile" person.slug %}"><span id="cake9">Return to Profile</span></a>
 <form method="POST">
     {% csrf_token %}
     {{ form.Category }}

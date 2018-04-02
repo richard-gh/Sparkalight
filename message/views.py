@@ -48,7 +48,7 @@ def draft(request):
             m = Message.objects.filter(pk__in=values)
             m = m.filter(recipient=request.user, draft=True)
             m.delete()
-            return HttpResponseRedirect(reverse('world:draft'))
+            return HttpResponseRedirect(reverse('message:draft'))
 
     paginator = Paginator(posts, 7)
 
@@ -116,7 +116,7 @@ def read_sent_message(request, id):
 
             Message.objects.create(user=request.user, recipient=messages.recipient, body=body, thread=messages.thread,
                                    sentmessage=True, read=False)
-            return HttpResponseRedirect(reverse('world:message'))
+            return HttpResponseRedirect(reverse('message:message'))
 
     message = Message.objects.filter(thread=messages.thread).filter(created__lte=messages.created)
     person = Person.objects.get(username=request.user)
@@ -148,12 +148,12 @@ def read(request, id):
                 return HttpResponseRedirect(reverse('world:login_request'))
             person = Person.objects.get(username=messages.user)
             if person.inbox == "D":
-                return HttpResponseRedirect(reverse('world:message'))
+                return HttpResponseRedirect(reverse('message:message'))
             body = form.cleaned_data['body']
 
             Message.objects.create(user=request.user, recipient=messages.user, body=body, thread=messages.thread,
                                    sentmessage=True, read=False)
-            return HttpResponseRedirect(reverse('world:message'))
+            return HttpResponseRedirect(reverse('message:message'))
         else:
             raise ValidationError
 
@@ -181,15 +181,15 @@ def create(request):
                 thread = Thread.objects.create(subject=subject, user=request.user)
                 Recipient = Person.objects.get(username=request.user)
                 if Recipient.inbox == "D":
-                    return HttpResponseRedirect(reverse('world:message'))
+                    return HttpResponseRedirect(reverse('message:message'))
                 message = Message.objects.create(user=request.user, recipient=recipient, body=message, thread=thread,
                                                  sentmessage=True, read=False)
-                return HttpResponseRedirect(reverse('world:message'))
+                return HttpResponseRedirect(reverse('message:message'))
             else:
                 thread = Thread.objects.create(subject=subject, user=request.user)
                 Message.objects.create(user=request.user, recipient=request.user, body=message, thread=thread,
                                        draft=True)
-                return HttpResponseRedirect(reverse('world:message'))
+                return HttpResponseRedirect(reverse('message:message'))
 
     elif request.POST.get('_save', False):
         form = NewMessageForm(request, request.POST)
@@ -199,7 +199,7 @@ def create(request):
             thread = Thread.objects.create(subject=subject, user=request.user)
             Message.objects.create(user=request.user, recipient=request.user, body=message, thread=thread, draft=True,
                                    sentmessage=False)
-            return HttpResponseRedirect(reverse('world:message'))
+            return HttpResponseRedirect(reverse('message:message'))
     return render(request, 'create.html', {'form': form, 'person': person})
 
 
@@ -234,7 +234,7 @@ def read_draft(request, id):
             m.draft = False
             m.sentmessage = True
             m.save()
-            return HttpResponseRedirect(reverse('world:message'))
+            return HttpResponseRedirect(reverse('message:message'))
         else:
             ctx = {'DraftForm': forms, 'ThreadForm': form, 'person': person}
             return render(request, 'create.html', ctx)

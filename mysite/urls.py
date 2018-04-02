@@ -15,7 +15,7 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'', include(pet.urls, namespace='world')),
-    url(r'/$', pet.views.index),
+    url(r'^$', pet.views.index),
     url(r'^account/', include(django.contrib.auth.urls)),
     url(r'^account/', include(accounts.urls)),
     url(r'^secert/', include(admin.site.urls)),

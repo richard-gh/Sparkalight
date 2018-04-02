@@ -84,14 +84,14 @@
     <div class="b9">Archive</div>
 </a>
 {% if user.is_authenticated %}<a class="theLink" href="{% url "world:profile" person.slug %}">
-    <div class="b10">profile</div>
+    <div class="b10">Profile</div>
 </a>{% else %}
-    <div class="b10">profile</div>{% endif %}
+    <div class="b10">Profile</div>{% endif %}
 <a class="theLink" href="{% url "world:show_following" %}">
     <div class="b11">Sparkling</div>
 </a>
 <a class="theLink" href="{% url "world:board_creator" %}">
-    <div class="b12">create</div>
+    <div class="b12">Create</div>
 </a>
 <div class="b2">SparkaLight</div>
 {% if board.user == request.user %}<a class="theLink" href="{% url "world:picture_creator" %}">

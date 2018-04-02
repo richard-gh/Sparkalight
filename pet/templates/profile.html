@@ -29,7 +29,7 @@
 
 
 <a class="theLink" href="/Follow">
-    <div class="box12">following</div>
+    <div class="box12">Following</div>
 </a>
 <a class="theLink" href="{% url "world:archive" %}">
     <div class="box13"> Archive</div>
@@ -38,7 +38,7 @@
     <div class="box14"> Explore</div>
 </a>
 <a class="theLink" href="{% url "world:board_creator" %}">
-    <div class="box15"> create</div>
+    <div class="box15"> Create</div>
 </a>
 
 <div class="box16"></div>
@@ -48,7 +48,7 @@
 </a>{% endif %}
 
 {% if person == request.user %}<a class="theLink" href="{% url "world:display" %}">
-    <div class="box18">edit profile</div>
+    <div class="box18">edit Profile</div>
 </a>{% else %}{% if not Follows %}
 
     {% if user.is_authenticated %}<a class="theLink" href="{% url "world:follower_add" person.username %}">

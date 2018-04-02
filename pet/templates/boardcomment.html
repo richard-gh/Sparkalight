@@ -70,9 +70,9 @@
 <div class="b3"></div>
 <div class="b4"></div>
 {% if user.is_authenticated %}<a class="theLink" href="{% url "world:profile" person.slug %}">
-    <div class="b9">profile</div>
+    <div class="b9">Profile</div>
 </a>{% else %}
-    <div class="b9">profile</div>{% endif %}
+    <div class="b9">Profile</div>{% endif %}
 <a class="theLink" href="{% url "world:board_finder" %}">
     <div class="b10">Explore</div>
 </a>
@@ -80,7 +80,7 @@
     <div class="b11">Sparkling</div>
 </a>
 <a class="theLink" href="{% url "world:board_creator" %}">
-    <div class="b12">create</div>
+    <div class="b12">Create</div>
 </a>
 <div class="b2">SparkaLight</div>
 {% if board.user == request.user %}<a class="theLink" href="{% url "world:picture_creator" %}">
