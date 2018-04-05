@@ -634,6 +634,7 @@
 
         .container {
             display: flex;
+            justify-content: flex-start;
         }
 
         .item {
@@ -940,7 +941,7 @@
 <div class="box2 container">
         {% paginate images %}
         {% for pet in images %}
-            <div class="box5 item">
+            <div class="item">
                 {% if pet.image %}
                     {% thumbnail pet.image "x500" as im %}
                         <a href="{{ im.url }}" class="slimbox lazy" rel="lightbox-journey">
