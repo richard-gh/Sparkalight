@@ -694,7 +694,6 @@ def friend_star(request, slug):
         return HttpResponseRedirect(reverse('world:edit_friend_func'))
 
 
-@page_template('image_listing.html')
 def car(request, id, slug, template='cars.html', extra_context=None):
     board = Board.objects.get(pk=id)
     person = []

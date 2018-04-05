@@ -2,43 +2,35 @@
 {% load el_pagination_tags %}{% load thumbnail %}
 
 
-<div class="box2 ColorChange">
-    <div class="wide ColorChange">
-
-
+<div class="box2 container">
         {% paginate images %}
         {% for pet in images %}
-
-
-            <div class="box5 ColorChange">{% if pet.image %}{% thumbnail pet.image "x500" as im %}
-                <a href="{{ im.url }}" class="slimbox lazy" rel="lightbox-journey">{% endthumbnail %}
-            {% thumbnail pet.image "x240" as im %}<img class="border borders" src="{{ im.url }}"></a>{% endthumbnail %}
-
-            {% endif %} {% if pet.user == request.user %}{% if pet.description %}
-
+            <div class="box5 item">
+                {% if pet.image %}
+                    {% thumbnail pet.image "x500" as im %}
+                        <a href="{{ im.url }}" class="slimbox lazy" rel="lightbox-journey">
+                    {% endthumbnail %}
+                {% thumbnail pet.image "x240" as im %}
+                    <img class="border borders" src="{{ im.url }}">
+                    </a>
+                {% endthumbnail %}
+                {% endif %} {% if pet.user == request.user %}{% if pet.description %}
                 <a class="theLink" href="{% url "world:description" pet.board.slug pet.board.id pet.id %}">
-
                     <div class="box6 words backgrounds">{{ pet.description|linebreaksbr }} </div>
-                </a> {% else %}
-
+                </a>
+            {% else %}
                 <a class="theLink" href="{% url "world:description" pet.board.slug pet.board.id pet.id %}">
-
                     <div class="red words backgrounds">Edit Picture</div>
                 </a> {% endif %}
-
-
-
             {% else %}
                 <div class="box6 words backgrounds">{{ pet.description|linebreaksbr }} </div>{% endif %}
-
-
             </div>
 
         {% endfor %}
+<div class="box2" style="display: block">
     {% show_pages %}
-    </div>
 </div>
-
+</div>
 
 {% get_pages %}
 <div class="paginator user">

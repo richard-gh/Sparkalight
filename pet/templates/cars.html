@@ -2,6 +2,7 @@
 <html lang="us">
 <head>
 {% load static %}
+{% load el_pagination_tags %}{% load thumbnail %}
     <script type="text/javascript" src="{% static "javascript/jquery-1.10.1.min.js" %}"></script>
 
     <link rel="stylesheet" type="text/css" href="{% static "css/farbtastic.css" %}">
@@ -245,7 +246,6 @@
 
 
         .box1 {
-            background-color: #FFFFFF;
             height: 520px;
             width: 510px;
             position: absolute;
@@ -253,7 +253,6 @@
         }
 
         .box2 {
-            background-color: #FCD3A8;
             height: 520px;
             width: 1200px;
             position: absolute;
@@ -262,7 +261,6 @@
         }
 
         .box3 {
-            background-color: #FFFFFF;
             height: 100px;
             width: 300px;
             position: absolute;
@@ -276,7 +274,6 @@
         }
 
         .box4 {
-            background-color: #FFFFFF;
             height: 150px;
             width: 320px;
             position: absolute;
@@ -289,7 +286,6 @@
         }
 
         .box5 {
-            background-color: #FCD3A8;
             width: 300px;
             margin: 30px;
             display: block;
@@ -299,7 +295,6 @@
         }
 
         .box6 {
-            margin: 5px;
             width: 250px;
             font-size: 16px;
             font-family: Quicksand_Book, quicksand_book-webfont;
@@ -310,7 +305,6 @@
         }
 
         .red {
-            margin: 5px;
             width: 250px;
             font-size: 14px;
             font-family: Quicksand_Book, quicksand_book-webfont;
@@ -325,7 +319,6 @@
             border-color: #FFFFFF;
             border-width: 12px;
             margin: 0 auto;
-            margin-bottom: px;
         }
 
         @font-face {
@@ -638,6 +631,13 @@
         .page_stats {
             color: #666666
         }
+
+        .container {
+            display: flex;
+        }
+
+        .item {
+        }
     </style>
 
 
@@ -937,13 +937,43 @@
 
 
 
-<div class="pagination" style="margin-top: 20px;">
-    <div class="endless_page_template">
-        {% include page_template %}
-    </div>
+<div class="box2 container">
+        {% paginate images %}
+        {% for pet in images %}
+            <div class="box5 item">
+                {% if pet.image %}
+                    {% thumbnail pet.image "x500" as im %}
+                        <a href="{{ im.url }}" class="slimbox lazy" rel="lightbox-journey">
+                    {% endthumbnail %}
+                {% thumbnail pet.image "x240" as im %}
+                    <img class="border borders" src="{{ im.url }}">
+                    </a>
+                {% endthumbnail %}
+                {% endif %} {% if pet.user == request.user %}{% if pet.description %}
+                <a class="theLink" href="{% url "world:description" pet.board.slug pet.board.id pet.id %}">
+                    <div class="box6 words backgrounds">{{ pet.description|linebreaksbr }} </div>
+                </a>
+            {% else %}
+                <a class="theLink" href="{% url "world:description" pet.board.slug pet.board.id pet.id %}">
+                    <div class="red words backgrounds">Edit Picture</div>
+                </a> {% endif %}
+            {% else %}
+                <div class="box6 words backgrounds">{{ pet.description|linebreaksbr }} </div>{% endif %}
+            </div>
+
+        {% endfor %}
 </div>
-<script src="{% static "" %}el-pagination/js/el-pagination.js"></script>
-<script>$.endlessPaginate();</script>
+
+{% get_pages %}
+<div class="paginator user">
+    <div style="text-align: center">{% show_pages %}</div>
+    <br>
+    Showing {{ pages.current_start_index }}-{{ pages.current_end_index }} of
+    {{ pages.total_count }}
+    </br>
+    {{ pages }}
+</div>
+
 
 
 <a class="clickBtn inactive customizebutton" href="#">customize board</a>
