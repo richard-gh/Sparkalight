@@ -1,8 +1,127 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-{% load static %}
-{% load thumbnail %}
+<html lang="en">
 
-<meta charset="utf-8"/>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content=""> {% load static %}
+    <!-- <link rel="stylesheet" href="{% static "css/theme.css" %}"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .box-shadow {
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+        }
+
+        .logo {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "world:profile" request.user.slug %}">Return back to Profile</a>
+                </li>
+            </ul>
+        </div>
+
+        <a class="navbar-brand logo" href="/">Sparkalight</a>
+        <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "world:following_all" %}">Edit People your Following</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "world:logout_request" %}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main role="main">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 ml-auto mr-auto my-5 p-4 bg-white rounded box-shadow">
+                    <h6 class="border-bottom border-gray pb-2 mb-4">People Your Sparkling</h6>
+                    <ul class="nav nav-pills mb-3">
+                        <li class="nav-item">
+                            <a class="nav-item nav-link active" href="{% url "world:show_followers" %}">Follower</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="{% url "world:my_friend" %}">Friend</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="{% url "world:search_person" %}">Search</a>
+                        </li>
+                    </ul>
+
+                    <div>
+                        <hr>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <!-- /.main -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script> -->
+    <script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
+
+</body>
+
+</html>
+
+
+
+<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> {% load static %} {% load thumbnail %}
+
+<meta charset="utf-8" />
 <link rel="stylesheet" href="{% static "css/following.css" %}">
 <script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
 
@@ -36,3 +155,4 @@
 <a class="theLink" href="{% url "world:following_all" %}">
     <div class="box7">Edit People Your Following</div>
 </a>
+-->

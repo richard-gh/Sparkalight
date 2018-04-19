@@ -1,3 +1,217 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% load static %} {% load thumbnail %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content=""> {% load static %}
+    <title>SparkaLight</title>
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{% static '/css/theme.css' %}">
+    <!-- Custom styles for this template -->
+    <!--  <link href="style.css" rel="stylesheet"> -->
+</head>
+
+<body class="blue-bg mt-2 inbox">
+
+
+    <div class="container pt-2 sp-h-100">
+        <header>
+
+            <div class="row sp-head-holder">
+                <div class="col-sm-4 logo-holder order-sm-2 m-blue-bg">
+                    <a href="/" class="logo hs white">SparkaLight</a>
+                </div>
+
+                <div class="col-sm-3 ml-auto order-sm-1 l-yellow-bg m-blue-border sp-nav-holder">
+                    <ul class="list-inline sp-nav mb-0 text-sm-center">
+                        <li class="list-inline-item">
+                            <a href="{% url "world:profile" person.slug %}" class="hs blue">Profile</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{% url "world:show_following" %}" class="hs blue">Following</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="col-sm-3 mr-auto order-sm-3 l-yellow-bg m-blue-border sp-nav-holder">
+                    <ul class="list-inline mb-0 sp-nav text-sm-center">
+                        <li class="list-inline-item">
+                            <a href="{% url "world:board_finder" %}" class="hs blue">Explore</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{% url "message:create" %}" class="hs blue">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="row title-holder">
+            <div class="col-sm-8 mb-1 mr-auto ml-auto m-blue-bg white text-center">
+                {% if sentmessage %}
+                <h2 class="hs my-0">Send Messages</h2>
+                {% else %}
+                <h2 class="hs my-0">Draft</h2>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 p-0 order-md-2">
+                <ul class="mail-menu list-unstyled">
+                    <li class="orange-link lw">
+                        <a href="{% url "message:create" %}">Create</a>
+                    </li>
+                    <li class="blue-link lw">
+                        <a href="{% url "message:message" %}">Inbox</a>
+                    </li>
+                    <li class="yellow-link lw">
+                        {% if sentmessage %}
+                        <a href="{% url "message:draft" %}">Draft</a>
+                        {% else %}
+                        <a href="{% url "message:sent_message" %}">Send Message</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-8 ml-auto white-bg pt-3 pb-3 order-md-1">
+                <table class="table table-bordered wb">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="blue-bg white lw">Sender</th>
+                            <th scope="col" class="blue-bg white lw">Subject</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <form method="POST" id="messageForm">
+                            {% csrf_token %} {% for m in posts %}
+                            <tr>
+                                {% if m.read == False %}
+                                <a class="theLink" href="{% url "message:read_draft" m.id %}">
+                                    <td>{{ m.user.username }}</td>
+                                </a>
+                                <td>{{ m.body }}</td>
+                                <td>
+                                    <input type="checkbox" value="{{ m.id }}" aria-label="Checkbox for following text input" class="messages id_check">
+                                </td>
+                                {% else %}
+
+                                <a class="theLink" href="{% url "message:read_draft" m.id %}">
+                                    <td>{{ m.user.username }}</td>
+                                </a>
+                                <td>{{ m.body }}</td>
+                                <td>
+                                    <input type="checkbox" value="{{ m.id }}" aria-label="Checkbox for following text input" class="messages id_check">
+                                </td>
+                                {% endif %} {% endfor %}
+                                <td>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="text-right">
+                                    <input type="button" id="deleteBttn" value="Delete" class="delete lw">
+                                </td>
+                                <td>
+                                    <input type="checkbox" aria-label="Checkbox for following text input">
+                                </td>
+                            </tr>
+                        </form>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <!-- container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#deleteBttn").click(function (event) {
+                var selectedList = "";
+                var selectCount = $(":checked.messages").length;
+                if (selectCount == 0) {
+                    alert("Please select atleast one message to delete.");
+                    return;
+
+                }
+                else if (confirm("Are you sure you want to delete the selected message(s)?")) {
+                    $(":checked.messages").each(function () {
+                        if (selectedList == "") {
+                            selectedList = $(this).val();
+                        }
+                        else {
+                            selectedList += "~" + $(this).val();
+                        }
+                    });
+                    if (selectedList != "") {
+                        $("#hidden_field").val(selectedList);
+                        $("#messageForm").submit();
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function toggle(source) {
+            checkboxes = document.getElementsByName('check');
+            for (var i = 0, n = checkboxes.length; i < n; i++) {
+                checkboxes[i].checked = source.checked;
+            }
+        }
+    </script>
+        {% if posts.object_list and posts.paginator.num_pages > 1 %}
+        <div class="pagination" style="margin-top: 20px; margin-left: -20px; ">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                <a href="?page={{ posts.previous_page_number }}">newer entries &lt;&lt; </a>
+                {% endif %}
+                <span class="current">
+                    &nbsp;Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+                </span>
+                {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}"> &gt;&gt; older entries</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!--
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN""http://www.w3.org/TR/html4/strict.dtd">
 {% load static %}
 <link rel="stylesheet" href="{% static "css/inbox.css" %}">
@@ -119,6 +333,7 @@
 
 
 <!-- Next/Prev page links  -->
+<!--
 {% if posts.object_list and posts.paginator.num_pages > 1 %}
     <div class="pagination" style="margin-top: 20px; margin-left: -20px; ">
             <span class="step-links">
@@ -138,3 +353,4 @@
 {% endif %}
 
 <input type="checkbox" onClick="toggle(this)" class="inbox"/>
+-->

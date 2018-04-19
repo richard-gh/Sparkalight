@@ -1,3 +1,277 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% load static %} {% load thumbnail %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content=""> {% load static %}
+    <title>SparkaLight</title>
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{% static '/css/theme.css' %}">
+    <!-- Custom styles for this template -->
+    <!--  <link href="style.css" rel="stylesheet"> -->
+</head>
+<body class="blue-bg mt-2 board-finder">
+
+
+    <div class="container pt-2 sp-h-100 yellow-bg">
+        <header>
+            <div class="row sp-head-holder">
+                <div class="col-sm-4 logo-holder order-sm-2 blue-bg">
+                    <a href="/" class="logo hs white">SparkaLight</a>
+                </div>
+
+                <div class="col-sm-3 ml-auto order-sm-1 red-bg sp-nav-holder">
+                    <ul class="list-inline sp-nav mb-0 text-sm-center">
+                        <li class="list-inline-item">
+                            <a href="{% url "world:profile" person.slug %}" class="hs white">Profile</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{% url "world:archive" %}" class="hs white">Archive</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 mr-auto order-sm-3 red-bg sp-nav-holder">
+                    <ul class="list-inline mb-0 sp-nav text-sm-center">
+                        <li class="list-inline-item">
+                            <a href="{% url "world:show_following" %}" class="hs white">Following</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{% url "world:board_creator" %}" class="hs white">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="col-sm-6 mb-1 mr-auto ml-auto text-center">
+                <h2 class="hs red my-0">Share you inspirational
+                    <br>Journey</h2>
+            </div>
+        </div>
+
+        <div class="row align-items-end">
+            <div class="col-sm-5 text-center">
+                {{ form.shirt_size }}
+                <ul class="list-inline bf-sort-links">
+                    <li class="list-inline-item">
+                        <input type="button" class="blue-bg white lw liked" id="recent" value="RECENT" style="padding: 7px 37px;">
+                    </li>
+                    <li class="list-inline-item">
+                        <input type="button" class="blue-bg white lw liked" id="liked" value="MOST LIKED" style="padding: 7px 37px;">
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-sm-5 ml-auto text-center">
+                <form>
+                    <div class="form-group row">
+                        <div class="col-sm-7 col-xs-8 ml-sm-auto p-sm-0">
+                            {{ form.search_key }}
+                        </div>
+                        <div class="col-sm-3 col-xs-4 text-left">
+                            <input type="submit" value="Search" class="search btn btn-link red hs" id="search">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="commentbox" class="row text-center"></div>
+
+        <div class="row">
+            <div class="col-sm-12 text-center mt-4 mb-4 white lw">
+            <div class="paginator">
+                <div class="page_stats">
+                </div>
+            
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- container -->
+    <style>
+    .picture {
+    border: 10px solid #fff;
+}
+    #pink {
+    font-size: 17px;
+    font-family: Lora;
+    color: #709AD1;
+}
+        #orange {
+    font-size: 18px !important;
+    font-family: Lora;
+    color: #E5AA7A;
+}
+    </style>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static "el-pagination/js/el-pagination.js" %}"></script>
+    <script type="text/javascript">$.endlessPaginate();</script>
+    <script type="text/javascript" src="{% static "javascript/jquery.columnizer.js" %}"></script>
+    <script type="text/javascript" src="{% static "javascript/jquery.lazyload.min.js" %}"></script>
+    <script type="text/javascript">
+        {% verbatim %}
+        jQuery(document).ready(function ($) {
+            $("img.lazy").lazyload(
+                {
+                    data_attribute: "orig"
+                });
+        }); {% endverbatim %}
+    </script>
+
+
+    <script type="text/javascript">
+        $.ajaxSetup({ cache: false });
+
+        function searchComments(searchKey, recent, liked, shirtSize, page) {
+
+
+            $.ajax({
+                url: '{% url "world:search_boards" %}',
+                data:
+                    {
+                        search_key: searchKey,
+                        recent_flag: recent,
+                        liked_flag: liked,
+                        shirt_size: shirtSize,
+                        page: page,
+                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                    },
+                type: 'get',
+                dataType: 'json',
+                success: function (data) {
+
+
+                    if (data.success == "true") {
+
+                        var pageNumber = data.page_num;
+                        var perPage = data.per_page;
+                        var totalCommentCount = data.board_count;
+                        var pageCommentCount = data.boards.length;
+                        var previousLabel = data.previous_label;
+                        var nextLabel = data.next_label;
+                        var comm = "";
+                        var ownerFlag = "";
+
+                        $('#commentbox').hide();
+                        $("#commentbox").html("");
+
+                        for (board in data.boards) {
+                            //alert();
+                            $("#commentbox").append("<div class='col-lg-3'><a class='theLink' href='/board/" + data.slug[board] + "," + data.id[board] + "' >" + "<div class='box13' ><div class='picture'><img class='lazy' src='" + data.image_list[board] + "' /> </div><div id='pink'>" + data.boards[board] + "</div>" + "<div id='orange'>" + data.user[board] + "</div>" + "</div></a></div>");
+                        }
+                        $('#commentbox').fadeIn('fast');
+
+                        $('.page_stats').hide();
+
+                        if (pageCommentCount == 0) {
+                            $(".page_stats").html("No record found. Please check your search criteria.");
+                        }
+                        else {
+                            if (pageNumber == 1) {
+                                var start = pageNumber;
+                                var end = pageCommentCount;
+                                $(".page_stats").html("Showing " + start + " - " + end + " of " + totalCommentCount);
+                            }
+                            else {
+                                var start = ((pageNumber - 1) * perPage) + 1;
+                                var end = start + pageCommentCount - 1;
+                                $(".page_stats").html("Showing " + start + " - " + end + " of " + totalCommentCount);
+                            }
+                        }
+                        $('.page_stats').fadeIn('fast');
+                        $(".pages").hide();
+                        $(".pages").html("");
+                        if (data.total_pages > 1) {
+                            for (var i = 1; i <= data.total_pages; i++) {
+                                if (pageNumber > 1 && i == 1) {
+                                    $(".pages").append('<a href="#page' + (pageNumber - 1) + '" onclick="searchComments(\'' + searchKey + '\',\'' + recent + '\',\'' + liked + '\',\'' + shirtSize + '\',' + (pageNumber - 1) + ')" rel="page" class="endless_page_link">' + previousLabel + '</a>');
+                                }
+                                if (pageNumber == i) {
+                                    $(".pages").append('<span class="endless_page_current"><strong>' + i + '</strong></span>');
+                                }
+                                else {
+                                    $(".pages").append('<a href="#page' + i + '" onclick="searchComments(\'' + searchKey + '\',\'' + recent + '\',\'' + liked + '\',\'' + shirtSize + '\',' + i + ')" rel="page" class="endless_page_link">' + i + '</a>');
+                                }
+                            }
+                            $('.pages').fadeIn('fast');
+
+                            if (pageNumber < data.total_pages) {
+                                $(".pages").append('<a href="#page' + (pageNumber + 1) + '" onclick="searchComments(\'' + searchKey + '\',\'' + recent + '\',\'' + liked + '\',\'' + shirtSize + '\',' + (pageNumber + 1) + ')" rel="page" class="endless_page_link">' + nextLabel + '</a>');
+                            }
+                        }
+                    }
+                    else {
+                        alert(data.msg);
+                    }
+                },
+                error: function () {
+                    alert('There was some internal error. Request could not be completed!');
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            searchComments("", "", "", "", 1)
+
+            $(".searchButton").on("click", function () {
+
+                var shirtSize = $("#id_shirt_size").val();
+                var searchKey = $.trim($("#id_search_key").val());
+
+                if (this.id == "recent") {
+                    searchComments("", 1, "", shirtSize, 1)
+                }
+                else if (this.id == "liked") {
+                    searchComments("", "", 1, shirtSize, 1)
+                }
+                else if (this.id == "search") {
+                    if (searchKey == "") {
+                        alert("Please enter a search key-word");
+                        return;
+                    }
+                    searchComments(searchKey, "", 1, shirtSize, 1)
+                }
+            });
+        });
+    </script>
+
+    <script>
+        {% verbatim %}
+        jQuery(document).ready(function ($) {
+            $("img.lazy").lazyload(
+                {
+                    data_attribute: "orig"
+                });
+        });
+        {% endverbatim %}
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#id_shirt_size').addClass('blue-bg white lw');
+            $('#id_search_key').addClass('w-100');
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+<!--
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 {% load static %}
 <html lang="us">
@@ -142,7 +416,8 @@
                     {
                         data_attribute: "orig"
                     });
-            });{% endverbatim %}
+            });
+            {% endverbatim %}
     </script>
 
 
@@ -202,3 +477,4 @@
 
 </body>
 </html>
+-->

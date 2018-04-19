@@ -1,3 +1,117 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% load static %} {% load thumbnail %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content=""> {% load static %}
+    <title>SparkaLight</title>
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{% static '/css/theme.css' %}">
+    <!-- Custom styles for this template -->
+    <!--  <link href="style.css" rel="stylesheet"> -->
+</head>
+
+<body class="green-bg create-board">
+
+
+    <div class="container">
+        <div class="container">
+            <div class="col-sm-12">
+                <a href="{% url "world:profile" person.slug %}" class="rp white lb">return of Profile</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 col-sm-10 mr-auto ml-auto d-blue-bg cb-box">
+                <h1 class="text-center lb white">Let create a board</h1>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <div id="error">{{ form.image.errors }}</div>
+                        <div id="error2">{{ form.text.errors }}</div>
+                        <div id="error3">{{ form.description.errors }}</div>
+                        <div id="error4">{{ form.name.errors }}</div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 lb white">Title:</label>
+                        <div class="col-sm-8">
+                            {{ form.name }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 lb white">What your board about:</label>
+                        <div class="col-sm-8">
+                            {{ form.text }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 lb white">Categorize</label>
+                        <div class="col-sm-8">
+                            {{ form.shirt_size }}
+                        </div>
+                    </div>
+
+                    <h2 class="lb text-center">Let also add the first picture to your board
+                        <span class="white">recommend</span>
+                    </h2>
+
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 lb brown">picture</label>
+                        <div class="col-sm-8">
+                            {{ form.image }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-4 lb brown">description</label>
+                        <div class="col-sm-8">
+                            {{ form.description }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12 text-center">
+                            <input type="submit" value="save" class="white lb orange-btn hides" >
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+        jQuery(document).ready(function ($) {
+            $('#id_description').addClass('w-100');
+            $('#id_description').attr('rows','4');
+            $('#id_text').addClass('w-100');
+            $('#id_name').addClass('w-100');
+            $('#id_shirt_size').addClass('w-100');
+            $('#id_text').attr('rows', '4');
+            $(".hides").click(function (e) {
+                $(this).css("display", "none");
+                $(this).after('<span class="create">  creating </span>');
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
+
+<!--
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
         "http://www.w3.org/TR/html4/strict.dtd">
 <meta charset="utf-8"/>
@@ -18,11 +132,13 @@
 
 
 <body>
+    
 <div class="box1"></div>
 <div class="box3">Let create a board</div>
 
 
-<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
 
     <div class="cup1"> Title:</div>
     {{ form.name }}
@@ -53,10 +169,4 @@
 
 
 </body>
-
-
-
-
-
-
-
+-->

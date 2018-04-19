@@ -1,3 +1,177 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content=""> {% load static %} {% load thumbnail %}
+    <!-- <link rel="stylesheet" href="{% static "css/theme.css" %}"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .box-shadow {
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+        }
+
+        .logo {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item active">
+            <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+          </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "world:profile" person.slug %}">Return back to Profile</a>
+                </li>
+            </ul>
+        </div>
+
+        <a class="navbar-brand logo" href="/">Sparkalight</a>
+        <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "world:logout_request" %}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main role="main">
+
+        <div class="container">
+
+
+            <div class="box14">
+
+                {% if posts.object_list and posts.paginator.num_pages > 1 %}
+                <div class="pagination" style="margin-top: 20px; margin-left: -20px; ">
+
+
+                    &nbsp;Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+                    <br> {% if posts.has_previous %}
+                    <a class="Link" href="{% if formula %}?text={{ formula }}&{% else %}?{% endif %}page={{ posts.previous_page_number }}">newer entries &lt;&lt; </a>
+                    {% endif %} {% if posts.has_next %}
+                    <a class="Link" href="{% if formula %}?text={{ formula }}&{% else %}?{% endif %}page={{ posts.next_page_number }}">
+                        &gt;&gt; older entries</a>
+                    {% endif %}
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8 ml-auto mr-auto my-5 p-4 bg-white rounded box-shadow">
+                    <h6 class="border-bottom border-gray pb-2 mb-4">Search for a friend</h6>
+                    <ul class="nav nav-pills mb-3">
+                        <li class="nav-item">
+                            <a class="nav-item nav-link active" href="{% url "world:my_friend" %}">Friend</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="{% url "world:show_following" %}">Following</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="{% url "world:show_followers" %}">Follower</a>
+                        </li>
+                    </ul>
+
+                    <div>
+
+                        <form method="GET" class="form-inline my-3">
+                            {% csrf_token %} {{ form.text.errors }} {{ form.text }}
+                            <input type="submit" value="Post" id="index" class="btn btn-outline-success my-2 my-sm-0 mr-auto" />
+                        </form>
+                        <hr> {% for f in posts.object_list %}
+
+                        <a class="theLink" href="{% url "world:profile" f.slug %}">
+                            <div class="b1"> {% if f.image %}{% thumbnail f.image "60x60" crop="center" as im %}
+                                <img src="{{ im.url }}"> {% endthumbnail %}{% else %}
+                                <img src="http://127.0.0.1:8000/media/empty/small-grey.png">{% endif %}
+
+                                <p> {% if f.name %} {{ f.name }} {% else %} {{ f.username }} {% endif %} </p>
+                            </div>
+                        </a>
+
+                        <div class="media text-muted pt-3" href="{% url " world:profile " f.slug %}">
+                            {% if f.image %}{% thumbnail f.image "60x60" crop="center" as im %}
+                            <img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px;"
+                                src="{{ im.url }}" data-holder-rendered="true"> {% endthumbnail %} {% else %}
+                            <img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px;"
+                                src="http://127.0.0.1:8000/media/empty/small-grey.png" data-holder-rendered="true"> {% endif %}
+                            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                {% if f.name %}
+                                <div class="d-flex justify-content-between align-items-center w-100">
+                                    <strong class="text-gray-dark">{{ f.name }}</strong>
+                                </div>
+                                <span class="d-block">{{ f.username }}</span>
+                                {% else %}
+                                <div class="d-flex justify-content-between align-items-center w-100">
+                                    <strong class="text-gray-dark">{{ f.username }}</strong>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+
+                        {% endfor %}
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+                        </br>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <!-- /.main -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
+
+</body>
+
+</html>
+
+<!--
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 {% load static %}
 {% load thumbnail %}
@@ -13,7 +187,8 @@
 </div>
 
 
-<div class="block">{% for f in posts.object_list %}
+<div class="block">
+    {% for f in posts.object_list %}
 
     <a class="theLink" href="{% url "world:profile" f.slug %}">
         <div class="b1">  {% if f.image %}{% thumbnail f.image "60x60" crop="center" as im %}
@@ -74,3 +249,4 @@
 {{ form.text.errors }}{{ form.text }}
 <input type="submit" value="Post" id="index"/>
 </form>
+-->

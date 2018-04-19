@@ -40,8 +40,8 @@ class UserRegistration(forms.Form):
 
 
 class LoginForm(forms.Form):
-    email = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput(render_value=False))
+    email = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Email address', 'type': 'email'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder': 'Password'},render_value=False))
 
     def clean(self):
 
@@ -113,7 +113,7 @@ class ProfileForm(forms.ModelForm):
 
 
 class BoardForm(forms.ModelForm):
-    text = forms.CharField(required=False, widget=forms.Textarea, max_length=200, )
+    text = forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control','rows':'3','placeholder':'What your board about:'}), max_length=200, )
     description = forms.CharField(required=False, widget=forms.Textarea, max_length=500, )
 
     image = forms.ImageField(required=False)
@@ -158,7 +158,7 @@ class BoardDeleteForm(forms.ModelForm):
 
 
 class SearchForm(forms.Form):
-    text = forms.CharField()
+    text = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control mr-sm-2 ml-auto'}))
 
 
 # class SearchBoardForm(forms.ModelForm):
@@ -174,7 +174,8 @@ class CommentsForm(forms.Form):
 
 
 class BoardNameForm(forms.ModelForm):
-    boardname = forms.CharField(max_length=55)
+   # boardname = forms.CharField(max_length=55)
+    boardname = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
 
     def __init__(self, user, *args, **kwargs):
         super(BoardNameForm, self).__init__(*args, **kwargs)

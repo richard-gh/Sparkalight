@@ -1,11 +1,123 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% load static %} {% load thumbnail %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content=""> {% load static %}
+    <title>SparkaLight</title>
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{% static '/css/theme.css' %}">
+    <!-- Custom styles for this template -->
+    <!--  <link href="style.css" rel="stylesheet"> -->
+</head>
+
+<body class="green-bg archive">
+
+
+    <div class="container pt-2">
+        <header>
+
+
+            <div class="row sp-head-holder">
+                <div class="col-sm-4 logo-holder order-sm-2 red-bg">
+                    <a href="/" class="logo hs white">SparkaLight</a>
+                </div>
+
+                <div class="col-sm-3 ml-auto order-sm-1 m-blue-bg sp-nav-holder">
+                    <ul class="list-inline sp-nav mb-0 text-sm-center">
+                        <li class="list-inline-item">
+                            <a href="{% url "world:profile" person.slug %}" class="hs white">Profile</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{% url "message:message" %}" class="hs white">Inbox</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="col-sm-3 mr-auto order-sm-3 m-blue-bg sp-nav-holder">
+                    <ul class="list-inline mb-0 sp-nav text-sm-center">
+                        <li class="list-inline-item">
+                            <a href="{% url "world:board_finder" %}" class="hs white">Explore</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{% url "world:board_creator" %}" class="hs white">Create</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="{% url "world:logout_request" %}" class="logout br red-bg white">logout</a>
+            </div>
+
+        </header>
+
+    </div>
+    <!-- container -->
+
+    <div class="container container-wide">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="title-holder">
+                    <div class="col-sm-12 mb-1 orange-bg white text-center">
+                        <h2 class="br my-0">recent comments</h2>
+                    </div>
+                </div>
+                <div class="box">
+
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="title-holder">
+                    <div class="col-sm-12 mb-1 orange-bg white text-center">
+                        <h2 class="hs my-0">Archive</h2>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="row">
+                        <div class="col-sm-4">
+
+                        </div>
+
+                        <div class="col-sm-4">
+
+                        </div>
+
+                        <div class="col-sm-4">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+
+<!--
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
         "http://www.w3.org/TR/html4/strict.dtd">
 
 <head>
     {% load static %}
-    <script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "javascript/jquery.columnizer.js" %}"></script>
-    <script type="text/javascript" src="{% static "javascript/jquery.lazyload.min.js" %}"></script>
+    <script type="text/javascript" src="{% static " javascript/jquery-1.9.1.min.js " %}"></script>
+    <script type="text/javascript" src="{% static " javascript/jquery.columnizer.js " %}"></script>
+    <script type="text/javascript" src="{% static " javascript/jquery.lazyload.min.js " %}"></script>
 
     <script type="text/javascript">
         $(function () {
@@ -20,17 +132,16 @@
 
     <script type="text/javascript">
         {% verbatim %}
-            jQuery(document).ready(function ($) {
-                $("img.lazy").lazyload(
-                    {
-                        data_attribute: "orig"
-                    });
-            });{% endverbatim %}
+        jQuery(document).ready(function ($) {
+            $("img.lazy").lazyload(
+                {
+                    data_attribute: "orig"
+                });
+        }); {% endverbatim %}
     </script>
 
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" href="{% static "css/archive.css" %}">
-    {% load thumbnail %}
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static "css/archive.css" %}"> {% load thumbnail %}
 
 </head>
 
@@ -71,5 +182,4 @@
 </div>
 <script type="text/javascript" src="{% static "el-pagination/js/el-pagination.js" %}"></script>
 <script type="text/javascript">$.endlessPaginate();</script>
-
-
+-->

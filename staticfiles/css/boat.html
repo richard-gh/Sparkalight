@@ -67,9 +67,6 @@
             <div class="ds"> Like {{ board.likeboard_set.count }}</div>
         </a>{% else %}
         <div class="ds"> Like {{ board.likeboard_set.count }}</div></a>{% endif %}
-
-
-
     {% endif %}
     <div class="box4">{% if board %}{{ board.description }}{% endif %}</div>
     <div class="box3">{% if board %}{{ board.name }}{% endif %}</div>
@@ -113,10 +110,10 @@
 
             <div class="box5">{% if pet.image %}
                 <a rel="shadowbox" {% thumbnail pet.image "x500" upscale=False as im %}
-                   href="{{ im.url }}" {% endthumbnail %}> {% thumbnail pet.image "x175" upscale=False as im %}
+                href="{{ im.url }}" {% endthumbnail %}> {% thumbnail pet.image "x175" upscale=False as im %}
                     <img class="lazy" src="aaaa.jpg"
-                         data-orig="{{ im.url }}"
-                         width="{{ im.width }}" height="{{ im.height }}"></a>{% endthumbnail %}
+                        data-orig="{{ im.url }}"
+                        width="{{ im.width }}" height="{{ im.height }}"></a>{% endthumbnail %}
 
 
             {% endif %}

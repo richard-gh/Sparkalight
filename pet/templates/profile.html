@@ -1,3 +1,137 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% load static %} {% load thumbnail %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+     {% load static %}
+    <title>SparkaLight</title>
+    
+    <!-- Bootstrap core CSS -->
+   <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{% static '/css/theme.css' %}">
+    <!-- Custom styles for this template -->
+  <!--  <link href="style.css" rel="stylesheet"> -->
+</head>
+
+<style>
+</style>
+
+<body class="blue-bg mt-2 profile">
+
+
+    <div class="container pt-2 sp-h-100 yellow-bg">
+        <header>
+            <div class="row">
+                <div class="col-sm-12 mb-4 text-right">
+                    {% if user.is_authenticated %}
+                    <a href="{% url "world:logout_request" %}" class="red br fs-17 logout">
+                        <u>logout</u>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row sp-head-holder">
+                <div class="col-sm-4 logo-holder order-sm-2 white-bg">
+                    <a href="/" class="logo hs yellow">SparkaLight</a>
+                </div>
+
+                <div class="col-sm-3 ml-auto order-sm-1 white-bg sp-nav-holder">
+                    <ul class="list-inline sp-nav mb-0 text-sm-center">
+                        <li class="list-inline-item">
+                            <a href="{% url "world:archive" %}" class="hs red">Archive</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{% url "world:board_finder" %}" class="hs red">Explore</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="col-sm-3 mr-auto order-sm-3 white-bg sp-nav-holder">
+                    <ul class="list-inline mb-0 sp-nav text-sm-center">
+                        <li class="list-inline-item">
+                            <a href="/Follow" class="hs red">Following</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{% url "world:board_creator" %}" class="hs red">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="col-sm-6 mb-1 mr-auto ml-auto blue-bg text-center">
+                <h2 class="hs my-0">{% if person %} {{ person.name }}{% endif %}</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 order-sm-2 text-center">
+                {% if person.image %}{% thumbnail person.image "250x250" as im %}
+                <img src="{{ im.url }}" class="my-5 img-fluid"> 
+                {% endthumbnail %}
+                {% else %}
+                    <div class="text-center avy-missing ml-auto mr-auto">
+                        <span class="d-inline-block w-100 question blue pr">?</span>
+                        <span class="ma-text blue pr">Missing avatar</span>
+                    </div>
+                {% endif %}
+
+
+                <!-- <img src="http://via.placeholder.com/250x250" class="my-5 img-fluid"> -->
+            </div>
+
+            <div class="col-sm-6 my-sm-5 order-sm-1">
+                <div class="box blue-bg p-3 pt-2 pb-2">
+                    <p>{% if person %} {{ person.description }}{% endif %}</p>
+                </div>
+                {% if person == request.user %}
+                <a href="{% url "world:display" %}" class="blue br">Edit Profile</a>
+                {% else %}{% if not Follows %} {% endif %} {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <a href="/board" class="btn red-bg white hs w-100 b-link">Board</a>
+            </div>
+
+            <div class="col-sm-12">
+                {% if user.is_authenticated %}{% if not person == request.user %}{% if not Friend %}{% if not already %}
+                <a class="theLink" href="{% url " world:friendship_add_friend " person.username %}">
+                    <div id="box26"> Add as friend</div>
+                </a>{% endif %}{% endif %}{% endif %}{% endif %}
+                
+                
+                <div class="endless_page_template text-center">
+                    {% include page_template %}
+                </div>
+                <script type="text/javascript" src="{% static " el-pagination/js/el-pagination.js " %}"></script>
+                <script type="text/javascript">$.endlessPaginate();</script>
+            </div>
+        </div>
+    </div>
+    <!-- container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="{% static "javascript/jquery-1.9.1.min.js" %}"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+
+<!--
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
     {% load static %}
@@ -73,3 +207,7 @@
 <script type="text/javascript" src="{% static "el-pagination/js/el-pagination.js" %}"></script>
 <script type="text/javascript">$.endlessPaginate();</script>
 
+
+
+
+-->
